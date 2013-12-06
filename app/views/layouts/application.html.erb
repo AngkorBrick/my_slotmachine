@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Sk-Slotmachine</title>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+	<div id="topBarInstitute"></div>
+	<div id="universitaet">
+		<%=image_tag("schriftzug_uni_heidelberg.jpg",:size=>"1230x190")%>
+		<div id="greyBar" style="width: 1230px;margin-left: 60px;"></div>
+		<div id="leftColumn" style="margin-left: 60px;text-align: left;">
+			<%=image_tag("9a.JPG",:size=>"185x144")%>
+			<div id="naviMainContainer">
+				<p>
+					<%=link_to("Basic Information",top_page_index_path,{:class=>"#{@focus1}"})%>
+	  				<%=link_to("Construction Part1",construction1_index_path,{:class=>"#{@focus2}"})%>
+	  				<%=link_to("Construction Part2",construction2_index_path,{:class=>"#{@focus3}"})%>
+	  				<%=link_to("Programming and Algorithm",programming_index_path,{:class=>"#{@focus4}"})%>
+	  				<%=link_to("Implementation",implement_index_path,{:class=>"#{@focus5}"})%>
+	  				<%=link_to("About Team",about_team_index_path,{:class=>"#{@focus6}"})%>
+				</p>
+			</div>
+		</div>
+		<div id="wrap">
+			<span id="middleColumn1">
+				<div id="content_top_picture">
+    					<%=image_tag("Robo_Head.jpg",:size=>"732x120")%>
+  				</div>
+  				<div style="float: left;"><%= render_breadcrumbs :separator => ' > '%></div>
+  				
+			</span>
+		</div>
+	</div>
+	
+	<%= yield :contents %>
+	<div id="pageContainer">
+		<div id="container">
+			<div id="rightColumn">
+				<div class="head2">Contact:</div>
+				<p>
+					Prof.Katja Mombaur
+					<br>
+					<li><a href="mailto:katja.mombaur@iwr.uni-heidelberg.de"target="_blank">katja.mombaur@iwr.uni-heidelberg.de</a></li>
+					<br>
+					Monika Harant
+					<br>
+					<li><a href="mailto:harant.monika@gmx.net" target="_blank">harant.monika@gmx.net</a></li>
+					<br>
+					Kuroun Seung
+					<br>
+					<li><a href="mailto:seung@stud.uni-heidelberg.de"target="_blank">roun.sk@gmail.com</a></li>
+				</p>
+				<div class="csc-default">
+					<div class="divider"><hr></div>
+				</div>
+				<div class="head2">Link:</div>
+				<p>
+					<li><a href="http://www.uni-heidelberg.de/"target="_blank">Universität Heidelberg</a></li>
+					<br>
+					<li><a href="http://www.iwr.uni-heidelberg.de/" target="_blank">Interdisciplinary Center for Scientific Computing (IWR)</a></li>
+					<br>
+					<li><a href="http://ornella.iwr.uni-heidelberg.de/ROBOTICSLAB/index.php?l=en"target="_blank">Robotics Lab</a></li>
+				</p>
+				<div class="csc-default">
+					<div class="divider"><hr></div>
+				</div>
+				<div class="head2">Documentation:</div>
+				<p>
+					<li><%=link_to("Presentation.pdf",:controller=>"application",:action=>"download_presentation")%></li>
+					<br>
+					<li><%=link_to("Source Code.rar",:controller=>"application",:action=>"download_code")%></li>
+					<br>
+					<li><%=link_to("Poster.pdf",:controller=>"application",:action=>"download_poster")%></li>
+				</p>
+			</div>
+		</div>
+	</div>
+	<div id="footer">
+		<div class="copyright" style="background-color:#990000;margin-left:60px; width: 1230px;color: white;">by Kuroun Seung 2012.</div>
+	</div>
+</body>
+</html>
