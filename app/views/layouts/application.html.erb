@@ -24,18 +24,16 @@
 				</p>
 			</div>
 		</div>
-		<div id="wrap">
-			<span id="middleColumn1">
+		<div id="wrap" style="text-align: left;">
+			<span id="middleColumn1" style="width: 723px;">
 				<div id="content_top_picture">
-    					<%=image_tag("Robo_Head.jpg",:size=>"732x120")%>
+    					<%=image_tag("Robo_Head.jpg",:size=>"723x120")%>
   				</div>
   				<div style="float: left;"><%= render_breadcrumbs :separator => ' > '%></div>
-  				
+  				<%= yield :contents %>
 			</span>
 		</div>
 	</div>
-	
-	<%= yield :contents %>
 	<div id="pageContainer">
 		<div id="container">
 			<div id="rightColumn">

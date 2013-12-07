@@ -1,2 +1,42 @@
-<h1>Construction1#index</h1>
-<p>Find me in app/views/construction1/index.html.erb</p>
+<% @focus1="level1-no"%>
+<% @focus2="level1-act"%>
+<% @focus3="level1-no"%>
+<% @focus4="level1-no"%>
+<% @focus5="level1-no"%>
+<% @focus6="level1-no"%>
+<%= content_for :contents do %>
+<div nowrap="nowrap" class="head1" style="margin-top: 20px;">Reel Design</div>
+<p style="text-align: justify;font-size:1em; width: 700">
+	There are three pictures on each reel: Apple, Banana, Mango. 
+	The reels are constructed with three motors. NXT motors have a class 
+	for accessing NXT motor ports. To be useful, a motor must be connected 
+	to one of the three NXT motor ports. This class provides an instance for each port. 
+	They are: Motor.A, Motor.B and Motor.C. Each of these three objects is an instance 
+	of the class NXTRegulatedMotor. This class provides methods for controlling the motor, 
+	and for finding out what the motor is doing.
+	<em>(Reference: Tutorial of <a href="http://lejos.sourceforge.net/nxt/nxj/tutorial/MotorTutorial/ControllingMotors.htm" target="_blank">Controlling the Motors</a>)</em>
+</p>
+<div style="text-align: center;">
+	<%=image_tag("motor1_3.jpg",:size=>"450x200")%>
+	<%=image_tag("SlideB.png",:size=>"650x300")%>
+</div>
+<div class="divider"><hr></div>
+<p style="text-align: justify;font-size:1em; width: 700">
+Three Reels: each reel is divided in three equal angles (120 of 360 degree)
+</p>
+<div style="text-align: center;">
+	<%=image_tag("SlideG.png",:size=>"650x240")%>
+</div>
+<div class="divider"><hr></div>
+<p style="text-align: justify;font-size:1em; width: 700">
+Three picture planes: Apple, Banana, Mango are cut and
+designed to be parallel with size and angle of the reel.
+</p>
+<div style="text-align: center;">
+	<%=image_tag("SlideH.png",:size=>"650x330")%>
+</div>
+<div class="divider"><hr></div>
+<div style="text-align: center;margin-bottom: 20px;">
+	<%=image_tag("9b.jpg",:size=>"600x430")%>
+</div>
+<%end%>

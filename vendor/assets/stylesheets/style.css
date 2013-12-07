@@ -54,8 +54,9 @@ h2 {
 }
 .head1{
 	background-color: #6CF;
-	padding:5px 335px 5px 335px;
 	font-weight:bold;
+	text-align: center;
+	white-space: nowrap;
 }
 head3{
 	background-color: #6CF;
