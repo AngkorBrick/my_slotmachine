@@ -1,2 +1,152 @@
-<h1>Programming#index</h1>
-<p>Find me in app/views/programming/index.html.erb</p>
+<% @focus1="level1-no"%>
+<% @focus2="level1-no"%>
+<% @focus3="level1-no"%>
+<% @focus4="level1-act"%>
+<% @focus5="level1-no"%>
+<% @focus6="level1-no"%>
+<% @focus7="level1-no"%>
+<%= content_for :contents do %>
+<div class="head1" style="margin-top: 20px;padding-left: 250px;">Programming unit: Brick NXT 2.0</div>
+<p style="text-align: justify;font-size:1em; width: 700">
+	The main component in the kit is a KC brick-shaped computer called 
+	<strong>the NXT Intelligent Brick AKA(Ciara)</strong>. It can take input from 
+	up to four sensors and control up to three motors, via 
+	<strong>RJ12 cables</strong>, very much similar to but incompatible with RJ11 
+	phone cords. The brick has a <strong>100×60 pixel monochrome LCD display</strong>
+	and four buttons that can be used to navigate a user interface using hierarchical
+	menus. It has a <strong>32-bit ARM7 processor, 256kb of FLASH memory, 
+	64kb of RAM, an 8-bit AVR microcontroller, and bluetooth support</strong>. 
+	It also has a speaker and can play sound files at sampling rates up to 8 kHz. 
+	Power is supplied by <strong>6 AA (1.5 V each) batteries</strong> in the consumer version 
+	of the kit and by a Li-Ion rechargeable battery and charger in the educational version. 
+	The Intelligent Brick remains unchanged with NXT 2.0. A black version of the brick was made 
+	to celebrate the 10th anniversary of the Mindstorms System with no change to the internals. 
+	<em>(by Wikipedia)</em>
+</p>
+<div style="text-align: center;">
+	<%=image_tag("SlideE.png",:size=>"650x150")%>
+</div>
+<p style="text-align: justify;font-size:1em; width: 700">
+	The program of the project uses <a href="http://bricxcc.sourceforge.net/nbc/nxcdoc/NXC_tutorial.pdf" target="_blank">NXC (Not eXactly C)</a> 
+	as a programming language similar to C language, invented by <strong>John Hansen</strong>, 
+	which was especially designed for the Lego robots. The integrated development environment (IDE) 
+	is the <a href="http://bricxcc.sourceforge.net/" target="_blank">Bricx Command Center (BricxCC)</a>. 
+</p>
+<div style="text-align: center;">
+	<%=image_tag("Brick window.png",:size=>"650x450")%>
+</div>
+<div class="head1" style="margin-top: 20px;margin-bottom: 20px;">Program Structure</div>
+<div style="text-align: center;">
+	<%=image_tag("SlideJ.png",:size=>"650x420")%>
+</div>
+<div class="head1" style="margin-top: 20px;padding-left: 300px;">Coin Slot and Color Sensor</div>
+<p style="text-align: justify;font-size:1em; width: 700">
+While the color sensor is detecting the blue slot wall, the coin runs across the sensor. 
+After that the sensor detects the color of the coin which is not blue, so the game is starting. 
+<br>
+<br>
+<strong>SetSensorColorFull(S1)</strong> configures the sensor on <em>port1</em> of the brick 
+as an NXT 2.0 color sensor in full color mode. <strong>SetSensor(IN_2, SENSOR_TOUCH)</strong> 
+configures the sensor on <em>port2</em> of the brick as the Touch sensor. Variable <em>i=2</em> 
+indicates that you can play 2 times per coin. <strong>until(INPUT_BLUECOLOR!=SENSOR_1)</strong> 
+waits for the color sensor at <em>port1</em> to detect a coin which is not blue. 
+<strong>ClearScreen()</strong> is used to clear the screen of the brick and the total score 
+<em>s</em>, the score of each reel <em>s1, s2, s3</em> are initialized with value <em>0</em> 
+before the game starts.
+</p>
+<div style="text-align: center;">
+	<%=image_tag("SlideK.png",:size=>"650x400")%>
+</div>
+<div class="head1" style="margin-top: 20px;padding-left: 300px;">Lever and Touch Sensor</div>
+<p style="text-align: justify;font-size:1em; width: 700">
+	After the game starts, the slot machine will wait for the player to push the lever to make 
+	the reels rotating.
+	<br>
+	<br>
+	<strong>Acquire(mutex)</strong> acquires the specified mutex variable. If another task already 
+	has acquired the mutex then the current task will be suspended until the mutex is released by 
+	the other task. This function is used to ensure that the current task has exclusive access to 
+	a shared resource, such as the display or a motor. In this program, the task 
+	<em>motor1, motor2, motor3</em> share the resource, so they can rotate at the same time and they 
+	will not be interrupted by other tasks until they finish.
+	<br>
+	<br>
+	<strong>until(SENSOR_2 == 1)</strong> waits for the Touch Sensor at <em>port2</em> being touched. 
+	<strong>TextOut()</strong> and <strong>NumOut()</strong> are display functions for showing text or 
+	a number at a specific location (X and Y axis) on the Brick screen. <strong>Wait(time)</strong> 
+	makes a task sleep for a specified amount of time (milisecond). The time argument may be an 
+	expression or a constant. <strong>ClearSensor(IN_2)</strong> is used for clearing the value of 
+	the sensor at <em>port2</em>. It means that when the Touch Sensor is touched, it stores the value 
+	of <em>1</em>, so it must be cleared before it waits for another touch. 
+	<strong>StartTask(task)</strong> starts the specific task. 
+	<em>(Reference: <a href="http://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=1&cad=rja&ved=0CCQQFjAA&url=http%3A%2F%2Fwww.pages.drexel.edu%2F~pyo22%2Fengr103-2010-2011%2Fengr103-Spring2010-2011%2Fweek02%2FNXC_API.pdf&ei=6BxpUIfdDcLIrQfPvIE4&usg=AFQjCNELwXfPpbL1m3wis33jp_epsibmtQ&sig2=IJBi5JrXuaL69e0u_m_goA" target="_blank">NXC API</a>)</em>
+</p>
+<div style="text-align: center;">
+	<%=image_tag("SlideL.png",:size=>"650x400")%>
+</div>
+<div class="head1" style="margin-top: 20px;padding-left: 300px;">Random Speed and Angles</div>
+<p style="text-align: justify;font-size:1em; width: 700">
+	All modern slot machines are designed using <a href="http://en.wikipedia.org/wiki/Slot_machine" target="_blank">pseudo random number generators ("PRNGs")</a>, 
+	which are constantly generating random numbers, at a rate of hundreds or perhaps 
+	thousands per second. As soon as the Play button is pressed, the most recent random 
+	number is used to determine the result. This means that the result varies depending on 
+	exactly when the game is played. A fraction of a second earlier or later, and the result 
+	would be different.
+	<br>
+	<br>
+	It is important that the machine contains a high-quality <a href="http://en.wikipedia.org/wiki/Random_number_generation" target="_blank">Random Number Generator (RNG)</a> 
+	implementation, because all PRNGs must eventually repeat their number sequence and if the period 
+	is short, or the PRNG is otherwise flawed, an advanced player may be able to predict the next result. 
+	Having access to the PRNG code and seed values <strong>Ronald Dale Harris</strong>, a former slot 
+	machine programmer, discovered equations for specific gambling games like <strong>Keno</strong> 
+	that allowed him to predict what the next set of selected numbers would be based on the previous 
+	games played.
+	<br>
+	<br>
+	Most machines are designed to defeat this by generating numbers even when the machine is not 
+	being played, so the player cannot tell where in the sequence they are, even if he knows how 
+	the machine was programmed. <em>(by Wikipedia)</em>
+	<br>
+  	<br>
+  	Random function <strong>int Random (unsigned int n)</strong>	
+ 	is the most important part of the program for generating random speed and angles. 
+ 	Return a signed or unsigned 16-bit random number. If the optional argument <em>n</em> 
+ 	is not provided the function will return a signed value. Otherwise the returned value will 
+ 	range between <em>0</em> and <em>n</em>.
+</p>
+<div style="text-align: center;">
+	<%=image_tag("SlideM.png",:size=>"650x250")%>
+</div>
+<div class="head1" style="margin-top: 20px;">Reels Rotation</div>
+<p style="text-align: justify;font-size:1em; width: 700">
+	There are three reels rotating by the tasks <em>motor1, motor2, motor3</em>. 
+	Their codes have the same structure. For example, in the <em>task motor1()</em>, <em>da=D</em> 
+	is defined as random rotating angles of the reel. <em>d1</em> is defined to find the position 
+	of the reel which illustrates what the picture (apple, banana or mango) is. 
+	<strong>RotateMotor(motor, speed, angle)</strong> rotates a motor forward (+) or backward (-) 
+	at a specific speed and angle. For example, <em>RotateMotor(OUT_A, A, -da)</em> rotates the motor 
+	at <em>portA</em> with speed defined by the random variable <em>A</em> and rotates 
+	<em>backward (-)</em> by the defined random variable <em>da</em>. Variable <em>s1</em> 
+	is has the value <em>360, 240 or 120</em> depending on the position of the reel.
+   	<br>
+   	<br>
+   	<strong>Release(mutex)</strong> is used to release a mutex so that it can be
+	acquired by another task. <em>Release</em> is a matching call to <em>Acquire</em> 
+	and as soon as possible after a shared resource is no longer needed. In this task, 
+	<em>Release</em> is called after the <em>task motor1()</em> is finished.
+</p>
+<div style="text-align: center;">
+	<%=image_tag("SlideN.png",:size=>"650x400")%>
+</div>
+<div class="head1" style="margin-top: 20px;">Game Rule</div>
+<p style="text-align: justify;font-size:1em; width: 700">
+	There are three rules for giving points and scores. There are 3 different relevant combinations 
+	of the pictures shown on the reels: 3 different pictures, 2 equal pictures or 3 equal pictures. 
+	The player will get a specific amount of points depending on the combination of pictures shown 
+	after the reels had stopped. The points are the number of chances to push the lever and the 
+	score is recorded in each rotation, and it will show up when the game ends.
+</p>
+<div style="text-align: center;">
+	<%=image_tag("SlideO.png",:size=>"650x420")%>
+</div>
+<%end%>

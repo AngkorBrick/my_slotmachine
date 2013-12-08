@@ -1,2 +1,42 @@
-<h1>AboutTeam#index</h1>
-<p>Find me in app/views/about_team/index.html.erb</p>
+<% @focus1="level1-no"%>
+<% @focus2="level1-no"%>
+<% @focus3="level1-no"%>
+<% @focus4="level1-no"%>
+<% @focus5="level1-no"%>
+<% @focus6="level1-act"%>
+<% @focus7="level1-no"%>
+<%= content_for :contents do %>
+<div class="divider" style="margin-top: 20px;"><hr></div>
+<p style="width:700; text-align:justify;">
+	<%=image_tag("Roun.JPG",:size=>"340x250",:align=>"left",:style=>"margin-right:10px;")%>
+	<strong>Name:</strong> Kuroun Seung
+	<br>
+	<strong>Semester:</strong> Summer 2012
+	<br>
+	<strong>Status:</strong> Bachelor of Informatics (Semester two)
+	<br>
+	<br>
+	<strong>Project Type:</strong> NXT - Slot Machine B
+	<br>
+	<strong>Supervisors:</strong> Monika Harant, Prof. Katja Mombaur
+	<br>
+	<br>
+	<strong>Email:</strong> seung@stud.uni-heidelberg.de, roun.sk@gmail.com
+</p>
+
+<div class="divider" style="margin-top:150px;"><hr></div>
+<p style="width:700; text-align:justify;">
+	<strong><em>Acknowledgement:</em></strong> This project would not be successful without many helps 
+	and advices from many people. First, I would like to extend my sincere appreciation and 
+	thankfulness to <strong>Prof. Katja Mombaur</strong> for giving me a chance to join this wonderful 
+	internship, and since I could stay in Heidelberg only for a short time, she allowed me to finish 
+	the project in my country, Cambodia. Additionally, in the process of doing the project, 
+	I would like to greatly thank <strong>Monika Harant</strong> and <strong>Felix Aller</strong> 
+	who always helped me solving any difficult problems and provided me with the most important 
+	materials.
+</p>
+<div class="divider"><hr></div>
+<div style="text-align: center;margin-bottom: 20px;">
+	<%=image_tag("2Logos.jpg",:size=>"600x280")%>
+</div>
+<%end%>

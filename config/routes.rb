@@ -1,4 +1,5 @@
 Myapp::Application.routes.draw do
+
   root :to => 'top_page#index'
 
   get "about_team/index",to: "about_team#index",as: :about_team_index
@@ -12,6 +13,9 @@ Myapp::Application.routes.draw do
   get "construction1/index",to: "construction1#index",as: :construction1_index
 
   get "top_page/index",to: "top_page#index",as: :top_page_index
+  
+  get "comment/index",to: "comment#index",as: :comment_index
+
   
   get "download/presentation",to: "application#download_presentation"
   get "download/code",to: "application#download_code"

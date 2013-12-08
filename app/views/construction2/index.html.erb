@@ -1,2 +1,50 @@
-<h1>Construction2#index</h1>
-<p>Find me in app/views/construction2/index.html.erb</p>
+<% @focus1="level1-no"%>
+<% @focus2="level1-no"%>
+<% @focus3="level1-act"%>
+<% @focus4="level1-no"%>
+<% @focus5="level1-no"%>
+<% @focus6="level1-no"%>
+<% @focus7="level1-no"%>
+<%= content_for :contents do %>
+<div nowrap="nowrap" class="head1" style="margin-top: 20px;">Coin Slot Design</div>
+<p style="text-align: justify;font-size:1em; width: 700">
+	The NXT Color Sensor is able to perform three unique functions. 
+	It acts as a color sensor, distinguishing among six colors; it works as a light 
+	sensor, detecting light intensities – both reflected light and ambient light; 
+	and it works as a color lamp, emitting red, green, or blue light. When Color 
+	sensor programms in Light Sensor Mode, this sensor has the exact same 
+	functionality as described above. However, it can also be programmed in Color 
+	Sensor mode. When doing so, the sensor can detect 6 different colors: Black, 
+	White, Blue, Green, Yellow and Red. A third functionality of this device is 
+	Lamp Mode, where it functions as a basic light, optionally Red, Green or Blue.
+	<em>(Reference:<a href="http://robotsquare.com/2012/02/18/understanding-nxt-versions/" target="_blank">Color Sensor</a>)</em>
+</p>
+<div style="text-align: center;">
+	<%=image_tag("SlideC.png",:size=>"650x150")%>
+</div>
+<div class="divider"><hr></div>
+<p style="text-align: justify;font-size:1em; width: 700">
+The coin slot is designed with a Color Sensor which distinguishes the color between the coin 
+and the wall of the coin slot when the coin runs across the sensor.
+</p>
+<div style="text-align: center;">
+	<%=image_tag("SlideQ.png",:size=>"650x300")%>
+</div>
+<div nowrap="nowrap" class="head1">Lever Design</div>
+<p style="text-align: justify;font-size:1em; width: 700">
+The lever is designed with a touch sensor. The Touch Sensor gives the robot a sense of touch. 
+The Touch Sensor detects when it is being pressed by something and when it is released again. 
+After putting a coin in the coin slot, players can push the lever to make the reels rotating.
+</p>
+<div style="text-align: center;">
+	<%=image_tag("SlideD.png",:size=>"650x150")%>
+</div>
+<div class="divider"><hr></div>
+<p style="text-align: justify;font-size:1em; width: 700">
+The lever is also designed with a <em>tension spring</em>. After the player pulls the lever, 
+the spring pulls the lever back to its original position.
+</p>
+<div style="text-align: center;">
+	<%=image_tag("SlideR.png",:size=>"650x300")%>
+</div>
+<%end%>

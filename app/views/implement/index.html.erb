@@ -1,2 +1,30 @@
-<h1>Implement#index</h1>
-<p>Find me in app/views/implement/index.html.erb</p>
+<% @focus1="level1-no"%>
+<% @focus2="level1-no"%>
+<% @focus3="level1-no"%>
+<% @focus4="level1-no"%>
+<% @focus5="level1-act"%>
+<% @focus6="level1-no"%>
+<% @focus7="level1-no"%>
+<%= content_for :contents do %>
+<div class="head1" style="margin-top: 20px;padding-left: 250px;">Challenges and Future Work</div>
+<p style="text-align: justify;font-size:1em; width: 700">
+	Programming the reel rotation was one of the challenges of my project because there were 
+	a lot of changes in that programming code and the rule of giving score. I spent much time 
+	on how to protect the motor task from user manipulation or unwanted operation while it is executed. 
+	Furthermore, conditions of giving score are also complicated. Although some programming languages 
+	are quite similar, the same command sometimes gives a different result. In addition, I'd thought 
+	of using a touch sensor for the coin slot, but the coin didn't fall smoothly, so I thought of 
+	using a color sensor instead of a touch sensor, and it could finally work efficiently. 
+	<br>
+	<br>
+	I wish I could have had more time to develop a slot machine with full performances such as 
+	improving the coin slot so that it is able to calculate the coin input, and pay some coins back 
+	to the player if they earn some scores, but due to my short stay in Heidelberg I could not 
+	realize these ideas.
+</p>
+<div class="head1" style="margin-top: 20px;padding-left: 270px;">Let's play slot machine!</div>
+<iframe style="padding-top: 20px;padding-left: 40px;" width="640" height="360" src="http://www.youtube.com/embed/ltlpe3_DkpU?feature=player_detailpage" frameborder="0" allowfullscreen></iframe>
+<p style="text-align: center;font-size:1em; width: 700;padding-bottom: 20px;">
+	If you cannot view the video, <a href="http://youtu.be/GqDny7sMiSs"target="_blank">click here</a>
+</p>
+<%end%>
