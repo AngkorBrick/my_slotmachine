@@ -31,7 +31,10 @@
     					<%=image_tag("Robo_Head.jpg",:size=>"723x120")%>
   				</div>
   				<div style="float: left;"><%= render_breadcrumbs :separator => ' > '%></div>
-  				<%= yield :contents %>
+  				<p id="notice"><%= notice %></p>
+    			<p id="alert"><%= alert %></p>
+    			<div style="margin-top: 40px;"><%= yield :contents %></div>
+  				
 			</span>
 		</div>
 	</div>
@@ -78,7 +81,7 @@
 		</div>
 	</div>
 	<div id="footer">
-		<div class="copyright" style="background-color:#990000;margin-left:60px; width: 1230px;color: white;">by Kuroun Seung 2012.</div>
+		<div class="copyright" style="background-color:#990000;margin-left:60px; width: 1230px;color: white;">by Kuroun Seung 2012 - 2014.</div>
 	</div>
 </body>
 </html>

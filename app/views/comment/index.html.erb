@@ -6,6 +6,26 @@
 <% @focus6="level1-no"%>
 <% @focus7="level1-act"%>
 <%= content_for :contents do %>
-<div class="head1" style="margin-top: 20px;padding-left: 250px;white-space: nowrap;">Write your comment here</div>
 <div class="head1" style="margin-top: 20px;padding-left: 250px;white-space: nowrap;">Other comments</div>
+view comment here!
+
+<div class="head1" style="margin-top: 20px;padding-left: 250px;white-space: nowrap;">Write your comment here</div>
+	<%= render "error", :obj => @comment %>
+	<%= form_for :user_comment,:url => url_for(:controller => 'comment',:action => 'create') do |f| %>
+                <table  width="100%" border="0" style="margin-top: 20px;font-size: 1.2em;">
+                  <tr>
+                    <th><span class="hiss">*</span> <%= f.label :name %></th>
+                    <td><%= f.text_field :name, { :size => 60 } %></td>
+                  </tr>
+                 <tr>
+                    <th><span class="hiss">*</span> <%= f.label :email %></th>
+                    <td><%= f.email_field :email, { :size => 60 } %></td>
+                  </tr>
+             		<tr>
+                    <th><span class="hiss">*</span> <%= f.label :comment %></th>
+                    <td><%= f.text_area :comment, { :cols => 50, :rows => 5 } %></td>
+                  </tr>
+                  <tr><td></td><td><%= f.submit "Submit" %></td></tr>
+                </table>
+          <% end %>
 <%end%>

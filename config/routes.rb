@@ -15,12 +15,11 @@ Myapp::Application.routes.draw do
   get "top_page/index",to: "top_page#index",as: :top_page_index
   
   get "comment/index",to: "comment#index",as: :comment_index
-
+  resources :comment
   
   get "download/presentation",to: "application#download_presentation"
   get "download/code",to: "application#download_code"
   get "download/poster",to: "application#download_poster"
-
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
