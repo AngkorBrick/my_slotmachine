@@ -4,7 +4,9 @@
   <title>Sk-Slotmachine</title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
-  <%= csrf_meta_tags %>
+  <%= javascript_include_tag "jquery-1.9.1" %>
+  <%= javascript_include_tag "jquery-ui" %>  
+  <%= csrf_meta_tags %> 
 </head>
 <body>
 	<div id="topBarInstitute"></div>
@@ -31,8 +33,10 @@
     					<%=image_tag("Robo_Head.jpg",:size=>"723x120")%>
   				</div>
   				<div style="float: left;"><%= render_breadcrumbs :separator => ' > '%></div>
-  				<p id="notice"><%= notice %></p>
-    			<p id="alert"><%= alert %></p>
+  				<div style="padding: 10px;">
+  					<p id="notice"><%= notice %></p>
+    				<p id="alert"><%= alert %></p>
+    			</div>
     			<div style="margin-top: 40px;"><%= yield :contents %></div>
   				
 			</span>

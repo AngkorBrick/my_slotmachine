@@ -1,5 +1,6 @@
   /* Version: 1.2.2.1 */
 
+
 body {
 	font-family: Arial, Helvetica, sans-serif;
 	font-size: 0.9em;
@@ -55,8 +56,9 @@ h2 {
 }
 .head1{
 	background-color: #6CF;
-	padding:5px 335px 5px 335px;
 	font-weight:bold;
+	text-align: center;
+	white-space: nowrap;
 }
 head3{
 	background-color: #6CF;
@@ -761,6 +763,21 @@ margin-top: 18px;
 	float : right;
 }
 */
+#notice {
+  color: green;
+  font-size: 15px;
+  margin-top: 20px;
+  font-weight: bold;
+  float: right;
+}
+
+#alert {
+  color: red;
+  font-size: 15px;
+  margin-top: 20px;
+  font-weight: bold;
+  float: right;
+}
 body {
 	font-size: 0.8em;
 	line-height: 1.2em;
@@ -1295,3 +1312,37 @@ p.schraeg       {
 
  */
 
+/* line 4, ../../app/assets/stylesheets/comment.css.scss */
+#error_explanation {
+  width: 410px;
+  border: 2px solid red;
+  padding: 7px;
+  padding-bottom: 0;
+  margin-bottom: 20px;
+  margin-top: 10px;
+  margin-left: 115px;
+  background-color: #f0f0f0;
+}
+/* line 13, ../../app/assets/stylesheets/comment.css.scss */
+#error_explanation h2 {
+  text-align: left;
+  font-weight: bold;
+  padding: 5px 5px 5px 15px;
+  font-size: 12px;
+  margin: -7px;
+  margin-bottom: 0px;
+  background-color: #c00;
+  color: #fff;
+}
+/* line 23, ../../app/assets/stylesheets/comment.css.scss */
+#error_explanation ul li {
+  font-size: 12px;
+  list-style: square;
+  margin-left: 15px;
+  color: #c00;
+}
+
+/* line 30, ../../app/assets/stylesheets/comment.css.scss */
+span.hiss {
+  color: #BB3737;
+}

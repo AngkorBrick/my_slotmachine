@@ -6,9 +6,9 @@
 <% @focus6="level1-no"%>
 <% @focus7="level1-act"%>
 <%= content_for :contents do %>
-<div class="head1" style="margin-top: 20px;padding-left: 250px;white-space: nowrap;">Write your comment here</div>
+<div class="head1" style="margin-top: 20px;white-space: nowrap;">Write your comment here</div>
 	<%= render "error", :obj => @comment %>
-	<%= form_for :user_comment,:url => url_for(:controller => 'comment',:action => 'create') do |f| %>
+	<%= form_for @comment,:url => url_for(:controller => 'comment',:action => 'create') do |f| %>
                 <table  width="100%" border="0" style="margin-top: 20px;font-size: 1.4em;">
                   <tr>
                     <th><span class="hiss">*</span> <%= f.label :name %></th>
@@ -22,17 +22,15 @@
                     <th><span class="hiss">*</span> <%= f.label :comment %></th>
                     <td><%= f.text_area :comment, { :cols => 50, :rows => 5 } %></td>
                   </tr>
-                  <tr><td></td><td><%= f.submit "Submit" %></td></tr>
+                  <tr><td></td><td><%= f.submit "Comment" %></td></tr>
                 </table>
           <% end %>
-<div class="head1" style="margin-top: 20px;padding-left: 250px;white-space: nowrap;">Other comments</div>
+<div class="head1" style="margin-top: 20px;white-space: nowrap;">Comment List</div>
 <div class="divider"><hr></div>
-<%@count=0%>
-<%@view_comment.each do |c| %>
-<%@count=@count+1%>
+<%@view_comment.each_with_index do |c,index| %>
 <table style="font-size: 1.4em;">
 	<tr>
-		<%if @count % 2 !=0 %>
+		<%if index % 2 !=0 %>
 		<td><%=image_tag("avatar-grey.png",:size=>"60x60")%></td>
 		<%else%>
 		<td><%=image_tag("avatar-pink.png",:size=>"60x60")%></td>
@@ -45,11 +43,12 @@
 		</td>
 		<td>
 			<div><%= c.comment%></div>
-			<br />
-			<div><%= link_to("Reply",top_page_index_path)%></div>
+			<br>
+			<div><%=link_to("Reply(#{UserReply.where('user_comment_id=?',c.id).count})",replies_index_path(:key => c.id))%></div>	
 		</td>
 	</tr>		
 </table>
+
 <div class="divider"><hr></div>
 <%end%>
 

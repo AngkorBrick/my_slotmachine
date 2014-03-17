@@ -3,15 +3,20 @@ class CommentController < ApplicationController
       add_breadcrumb "Comment and Feedback", :comment_index_path,:title => "Back to Comment and Feedback Page"
       @comment = UserComment.new
       @view_comment=UserComment.view
-      #@view_reply=UserReply.view(params[:id])
+  end 
+  def delete_content
+    respond_to do |format|               
+      format.js
+    end        
   end  
   def create
   @comment = UserComment.new(params[:user_comment])
   @view_comment=UserComment.view
       respond_to do |format|
         if @comment.save
-          format.html {
-            flash[:notice] ="Comment was successfully added!"
+          #render :partial => 'comment', :object => @comment
+        format.html {
+            flash[:notice] ="Comment was successfully added."
             redirect_to :controller=>"comment",:action => "index"
           }
           format.json { render json: @comment, status: :created, location: @comment }
@@ -23,4 +28,5 @@ class CommentController < ApplicationController
         end
       end
   end
+  
 end

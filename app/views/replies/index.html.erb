@@ -1,0 +1,73 @@
+<% @focus1="level1-no"%>
+<% @focus2="level1-no"%>
+<% @focus3="level1-no"%>
+<% @focus4="level1-no"%>
+<% @focus5="level1-no"%>
+<% @focus6="level1-no"%>
+<% @focus7="level1-no"%>
+<%= content_for :contents do %>
+	<%@head_comment.each_with_index do |c,index| %>
+		<div style="margin-left: 15px;"><%= render "error", :obj => @reply %></div>
+		<div class="divider"><hr></div>
+		<table style="font-size: 1.4em;">
+			<tr>
+				<td><%=image_tag("avatar-brown.png",:size=>"60x60")%></td>
+				<td style="padding: 10px;">
+					<div style="color: #990000;font-weight: bold;"><%= c.name %></div>
+					<div nowrap="nowrap" style="white-space: nowrap;"><%= c.email%></div>
+					<br>
+					<div nowrap="nowrap" style="white-space: nowrap;"><%= c.created_at%></div>
+				</td>
+				<td>
+					<div><%= c.comment%></div>
+				</td>
+			</tr>		
+		</table>
+		<div class="divider"><hr></div>
+		<div class="head1" style="margin-top: 20px;white-space: nowrap;">Reply List</div>
+		<%@view_reply.each_with_index do |r,index_r| %>
+			<table style="font-size: 1.4em;margin-left: 60px;">
+				<tr>
+					<%if index_r % 2 !=0 %>
+						<td><%=image_tag("reply-grey.png",:size=>"40x40")%></td>
+					<%else%>
+						<td><%=image_tag("reply-pink.png",:size=>"40x40")%></td>
+					<%end%>
+					<td style="padding: 10px;">
+						<div style="color: #990000;font-weight: bold;"><%= r.name %></div>
+						<div nowrap="nowrap" style="white-space: nowrap;"><%= r.email%></div>
+						<br>
+						<div nowrap="nowrap" style="white-space: nowrap;"><%= r.created_at%></div>
+					</td>
+					<td>
+						<div><%= r.reply%></div>
+					</td>
+				</tr>		
+			</table>
+			<div style="margin-left: 60px;" class="divider"><hr></div>
+		<%end%>
+		<div style="margin-left: 60px;">
+			<%= form_for @reply,:url => url_for(:controller => 'replies',:action => 'create',:key=>c.id) do |f| %>
+		    	<table  width="100%" border="0" style="margin-top: 20px;font-size: 1.4em;">
+	  	          <tr>
+	    	          <th><span class="hiss">*</span><%= f.label :name %></span></th>
+		              <td>
+		              	<%= f.hidden_field :user_comment_id,:value=>c.id%>
+		              	<%= f.text_field :name, { :size => 60 } %>
+		              </td>
+		          </tr>
+		          <tr>
+		              <th><span class="hiss">*</span> <%= f.label :email %></th>
+		              <td><%= f.email_field :email, { :size => 60 } %></td>
+		              </tr>
+		          <tr>
+		          	  <th><span class="hiss">*</span> <%= f.label :reply %></th>
+		              <td><%= f.text_area :reply, { :cols => 50, :rows => 5 } %></td>
+		          </tr>
+		         	  <tr><td></td><td><%= f.submit "Reply" %></td>
+		          </tr>
+		      	</table>
+		     <% end %>
+	     </div>
+	<%end%>
+<%end%>
