@@ -4,14 +4,10 @@ class CommentController < ApplicationController
       @comment = UserComment.new
       @view_comment=UserComment.view
   end 
-  def delete_content
-    respond_to do |format|               
-      format.js
-    end        
-  end  
+ 
   def create
-  @comment = UserComment.new(params[:user_comment])
-  @view_comment=UserComment.view
+    @comment = UserComment.new(params[:user_comment])
+    @view_comment=UserComment.view
       respond_to do |format|
         if @comment.save
           #render :partial => 'comment', :object => @comment
@@ -28,5 +24,19 @@ class CommentController < ApplicationController
         end
       end
   end
+  def destroy
+    @comment = UserComment.find(params[:key_com])
+    @comment.destroy
   
+    respond_to do |format|
+      flash[:notice] ="Comment was successfully deleted."
+      format.html { redirect_to :comment_index }
+    end
+    rescue Exception => e
+        respond_to do |format|
+          flash[:alert] = "Error class: #{e.class}<br/>Error message: #{e}".html_safe
+          format.html {redirect_to comment_index_path, notice: 'Deletion is cancelled.' }
+          format.json { render json: @comment.errors, status: :unprocessable_entity }
+        end
+  end
 end

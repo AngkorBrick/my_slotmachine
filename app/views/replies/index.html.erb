@@ -21,10 +21,16 @@
 				<td>
 					<div><%= c.comment%></div>
 				</td>
-			</tr>		
+			</tr>
+			<%= form_for(@comment, :url => {:controller => "comment", :action => "destroy",:key_com=>c.id }, :method => :delete) do |f| %>
+				<span style="margin-left: 700px;">
+					<%=image_submit_tag("delete.png", :onclick => "return confirm('Are you sure to delete this comment?')")%>
+				</span>		
+			<%end%>		
 		</table>
-		<div class="divider"><hr></div>
-		<div class="head1" style="margin-top: 20px;white-space: nowrap;">Reply List</div>
+		<!--<div class="divider"><hr></div>-->
+		
+		<div class="head1" style="margin-top: 20px;margin-bottom:10px; white-space: nowrap;">Reply List</div>
 		<%@view_reply.each_with_index do |r,index_r| %>
 			<table style="font-size: 1.4em;margin-left: 60px;">
 				<tr>
@@ -42,12 +48,18 @@
 					<td>
 						<div><%= r.reply%></div>
 					</td>
-				</tr>		
+				</tr>
+				<%= form_for(@reply, :url => {:controller => "replies", :action => "destroy",:key_re=>r.id,:key_com=>c.id }, :method => :delete) do |f| %>
+					<span style="margin-left: 700px;">
+						<%=image_submit_tag("delete.png", :onclick => "return confirm('Are you sure to delete this reply?')")%>
+					</span>		
+				<%end%>		
 			</table>
 			<div style="margin-left: 60px;" class="divider"><hr></div>
 		<%end%>
+		<div class="head1" style="margin-top: 20px;white-space: nowrap;">Write your reply here</div>
 		<div style="margin-left: 60px;">
-			<%= form_for @reply,:url => url_for(:controller => 'replies',:action => 'create',:key=>c.id) do |f| %>
+			<%= form_for @reply,:url => url_for(:controller => 'replies',:action => 'create',:key_com=>c.id) do |f| %>
 		    	<table  width="100%" border="0" style="margin-top: 20px;font-size: 1.4em;">
 	  	          <tr>
 	    	          <th><span class="hiss">*</span><%= f.label :name %></span></th>

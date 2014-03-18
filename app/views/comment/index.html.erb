@@ -44,11 +44,16 @@
 		<td>
 			<div><%= c.comment%></div>
 			<br>
-			<div><%=link_to("Reply(#{UserReply.where('user_comment_id=?',c.id).count})",replies_index_path(:key => c.id))%></div>	
+			<div><%=link_to("Reply(#{UserReply.where('user_comment_id=?',c.id).count})",reply_index_path(:key_com => c.id))%></div>	
 		</td>
-	</tr>		
+	</tr>
+	
+	<%= form_for(@comment, :url => { :action => "destroy",:key_com=>c.id }, :method => :delete) do |f| %>
+		<span style="margin-left: 700px;">
+			<%=image_submit_tag("delete.png", :onclick => "return confirm('Are you sure to delete this comment?')")%>
+		</span>		
+	<%end%>	
 </table>
-
 <div class="divider"><hr></div>
 <%end%>
 

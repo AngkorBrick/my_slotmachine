@@ -1,27 +1,21 @@
 Myapp::Application.routes.draw do
 
-  get "replies/index"
-
   root :to => 'top_page#index'
 
   get "about_team/index",to: "about_team#index",as: :about_team_index
-
   get "implement/index",to: "implement#index",as: :implement_index
-
   get "programming/index",to: "programming#index",as: :programming_index
-
   get "construction2/index",to: "construction2#index",as: :construction2_index
-
   get "construction1/index",to: "construction1#index",as: :construction1_index
-
   get "top_page/index",to: "top_page#index",as: :top_page_index
-  
   get "comment/index",to: "comment#index",as: :comment_index
-  
   get "reply/index",to: "replies#index",as: :reply_index
   
-  resources :comment,:replies
+  delete "comment/delete",to: "comment#destroy",as: :destroy_comment
+  delete "reply/delete",to: "replies#destroy",as: :destroy_reply  
   
+  resources :comment,:replies
+
   get "download/presentation",to: "application#download_presentation"
   get "download/code",to: "application#download_code"
   get "download/poster",to: "application#download_poster"
