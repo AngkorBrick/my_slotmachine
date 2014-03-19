@@ -9,6 +9,10 @@ class RepliesController < ApplicationController
     @comment = UserComment.find(params[:key_com])
   end
   def create
+    @head_comment=UserComment.view.where("id=?",params[:key_com])
+    @comment = UserComment.find(params[:key_com])
+    @view_reply=UserReply.view(params[:key_com])
+     
     @reply = UserReply.new(params[:user_reply])
       respond_to do |format|
         if @reply.save

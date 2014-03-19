@@ -7,7 +7,7 @@
 <% @focus7="level1-act"%>
 <%= content_for :contents do %>
 <div class="head1" style="margin-top: 20px;white-space: nowrap;">Write your comment here</div>
-	<%= render "error", :obj => @comment %>
+	<%= render "/partials/error", :obj => @comment %>
 	<%= form_for @comment,:url => url_for(:controller => 'comment',:action => 'create') do |f| %>
                 <table  width="100%" border="0" style="margin-top: 20px;font-size: 1.4em;">
                   <tr>
@@ -25,36 +25,38 @@
                   <tr><td></td><td><%= f.submit "Comment" %></td></tr>
                 </table>
           <% end %>
-<div class="head1" style="margin-top: 20px;white-space: nowrap;">Comment List</div>
-<div class="divider"><hr></div>
-<%@view_comment.each_with_index do |c,index| %>
-<table style="font-size: 1.4em;">
-	<tr>
-		<%if index % 2 !=0 %>
-		<td><%=image_tag("avatar-grey.png",:size=>"60x60")%></td>
-		<%else%>
-		<td><%=image_tag("avatar-pink.png",:size=>"60x60")%></td>
-		<%end%>
-		<td style="padding: 10px;">
-			<div style="color: #990000;font-weight: bold;"><%= c.name %></div>
-			<div nowrap="nowrap" style="white-space: nowrap;"><%= c.email%></div>
-			<br>
-			<div nowrap="nowrap" style="white-space: nowrap;"><%= c.created_at%></div>
-		</td>
-		<td>
-			<div><%= c.comment%></div>
-			<br>
-			<div><%=link_to("Reply(#{UserReply.where('user_comment_id=?',c.id).count})",reply_index_path(:key_com => c.id))%></div>	
-		</td>
-	</tr>
-	
-	<%= form_for(@comment, :url => { :action => "destroy",:key_com=>c.id }, :method => :delete) do |f| %>
-		<span style="margin-left: 700px;">
-			<%=image_submit_tag("delete.png", :onclick => "return confirm('Are you sure to delete this comment?')")%>
-		</span>		
-	<%end%>	
-</table>
-<div class="divider"><hr></div>
+<% unless @view_comment.nil? || @view_comment.empty? %>
+	<div class="head1" style="margin-top: 20px;white-space: nowrap;">Comment Threads</div>
+	<div class="divider"><hr></div>
+	<%@view_comment.each_with_index do |c,index| %>
+	<table style="font-size: 1.4em;">
+		<tr>
+			<%if index % 2 !=0 %>
+			<td><%=image_tag("avatar-grey.png",:size=>"60x60")%></td>
+			<%else%>
+			<td><%=image_tag("avatar-pink.png",:size=>"60x60")%></td>
+			<%end%>
+			<td style="padding: 10px;">
+				<div style="color: #990000;font-weight: bold;"><%= c.name %></div>
+				<div nowrap="nowrap" style="white-space: nowrap;"><%= c.email%></div>
+				<br>
+				<div nowrap="nowrap" style="white-space: nowrap;"><%= c.created_at%></div>
+			</td>
+			<td>
+				<div><%= c.comment%></div>
+				<br>
+				<div><%=link_to("Reply(#{UserReply.where('user_comment_id=?',c.id).count})",reply_index_path(:key_com => c.id))%></div>	
+			</td>
+		</tr>
+		
+		<%= form_for(@comment, :url => { :action => "destroy",:key_com=>c.id }, :method => :delete) do |f| %>
+			<span style="margin-left: 700px;">
+				<%=image_submit_tag("delete.png", :onclick => "return confirm('Are you sure to delete this comment?')")%>
+			</span>		
+		<%end%>	
+	</table>
+	<div class="divider"><hr></div>
+	<%end%>
 <%end%>
 
 <%end%>

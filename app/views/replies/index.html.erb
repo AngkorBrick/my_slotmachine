@@ -7,7 +7,7 @@
 <% @focus7="level1-no"%>
 <%= content_for :contents do %>
 	<%@head_comment.each_with_index do |c,index| %>
-		<div style="margin-left: 15px;"><%= render "error", :obj => @reply %></div>
+		<div style="margin-left: 15px;"><%= render "/partials/error", :obj => @reply %></div>
 		<div class="divider"><hr></div>
 		<table style="font-size: 1.4em;">
 			<tr>
@@ -29,33 +29,34 @@
 			<%end%>		
 		</table>
 		<!--<div class="divider"><hr></div>-->
-		
-		<div class="head1" style="margin-top: 20px;margin-bottom:10px; white-space: nowrap;">Reply List</div>
-		<%@view_reply.each_with_index do |r,index_r| %>
-			<table style="font-size: 1.4em;margin-left: 60px;">
-				<tr>
-					<%if index_r % 2 !=0 %>
-						<td><%=image_tag("reply-grey.png",:size=>"40x40")%></td>
-					<%else%>
-						<td><%=image_tag("reply-pink.png",:size=>"40x40")%></td>
-					<%end%>
-					<td style="padding: 10px;">
-						<div style="color: #990000;font-weight: bold;"><%= r.name %></div>
-						<div nowrap="nowrap" style="white-space: nowrap;"><%= r.email%></div>
-						<br>
-						<div nowrap="nowrap" style="white-space: nowrap;"><%= r.created_at%></div>
-					</td>
-					<td>
-						<div><%= r.reply%></div>
-					</td>
-				</tr>
-				<%= form_for(@reply, :url => {:controller => "replies", :action => "destroy",:key_re=>r.id,:key_com=>c.id }, :method => :delete) do |f| %>
-					<span style="margin-left: 700px;">
-						<%=image_submit_tag("delete.png", :onclick => "return confirm('Are you sure to delete this reply?')")%>
-					</span>		
-				<%end%>		
-			</table>
-			<div style="margin-left: 60px;" class="divider"><hr></div>
+		<% unless @view_reply.nil? || @view_reply.empty? %>
+			<div class="head1" style="margin-top: 20px;margin-bottom:10px; white-space: nowrap;">Reply Threads</div>
+			<%@view_reply.each_with_index do |r,index_r| %>
+				<table style="font-size: 1.4em;margin-left: 60px;">
+					<tr>
+						<%if index_r % 2 !=0 %>
+							<td><%=image_tag("reply-grey.png",:size=>"40x40")%></td>
+						<%else%>
+							<td><%=image_tag("reply-pink.png",:size=>"40x40")%></td>
+						<%end%>
+						<td style="padding: 10px;">
+							<div style="color: #990000;font-weight: bold;"><%= r.name %></div>
+							<div nowrap="nowrap" style="white-space: nowrap;"><%= r.email%></div>
+							<br>
+							<div nowrap="nowrap" style="white-space: nowrap;"><%= r.created_at%></div>
+						</td>
+						<td>
+							<div><%= r.reply%></div>
+						</td>
+					</tr>
+					<%= form_for(@reply, :url => {:controller => "replies", :action => "destroy",:key_re=>r.id,:key_com=>c.id }, :method => :delete) do |f| %>
+						<span style="margin-left: 700px;">
+							<%=image_submit_tag("delete.png", :onclick => "return confirm('Are you sure to delete this reply?')")%>
+						</span>		
+					<%end%>		
+				</table>
+				<div style="margin-left: 60px;" class="divider"><hr></div>
+			<%end%>
 		<%end%>
 		<div class="head1" style="margin-top: 20px;white-space: nowrap;">Write your reply here</div>
 		<div style="margin-left: 60px;">
