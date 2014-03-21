@@ -22,11 +22,13 @@
 					<div><%= c.comment%></div>
 				</td>
 			</tr>
-			<%= form_for(@comment, :url => {:controller => "comment", :action => "destroy",:key_com=>c.id }, :method => :delete) do |f| %>
-				<span style="margin-left: 700px;">
-					<%=image_submit_tag("delete.png", :onclick => "return confirm('Are you sure to delete this comment?')")%>
-				</span>		
-			<%end%>		
+			<% if admin_signed_in? %>
+				<%= form_for(@comment, :url => {:controller => "comment", :action => "destroy",:key_com=>c.id }, :method => :delete) do |f| %>
+					<span style="margin-left: 700px;">
+						<%=image_submit_tag("delete.png", :onclick => "return confirm('Are you sure to delete this comment?')")%>
+					</span>		
+				<%end%>	
+			<%end%>	
 		</table>
 		<!--<div class="divider"><hr></div>-->
 		<% unless @view_reply.nil? || @view_reply.empty? %>
@@ -49,11 +51,13 @@
 							<div><%= r.reply%></div>
 						</td>
 					</tr>
-					<%= form_for(@reply, :url => {:controller => "replies", :action => "destroy",:key_re=>r.id,:key_com=>c.id }, :method => :delete) do |f| %>
-						<span style="margin-left: 700px;">
-							<%=image_submit_tag("delete.png", :onclick => "return confirm('Are you sure to delete this reply?')")%>
-						</span>		
-					<%end%>		
+					<% if admin_signed_in? %>
+						<%= form_for(@reply, :url => {:controller => "replies", :action => "destroy",:key_re=>r.id,:key_com=>c.id }, :method => :delete) do |f| %>
+							<span style="margin-left: 700px;">
+								<%=image_submit_tag("delete.png", :onclick => "return confirm('Are you sure to delete this reply?')")%>
+							</span>		
+						<%end%>	
+					<%end%>	
 				</table>
 				<div style="margin-left: 60px;" class="divider"><hr></div>
 			<%end%>

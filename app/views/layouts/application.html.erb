@@ -44,41 +44,47 @@
 		<div id="container">
 			<div id="rightColumn">
 				<div class="head2">Contact:</div>
-				<p>
-					Prof.Katja Mombaur
-					<br>
-					<li><a href="mailto:katja.mombaur@iwr.uni-heidelberg.de"target="_blank">katja.mombaur@iwr.uni-heidelberg.de</a></li>
-					<br>
-					Monika Harant
-					<br>
-					<li><a href="mailto:harant.monika@gmx.net" target="_blank">harant.monika@gmx.net</a></li>
-					<br>
-					Kuroun Seung
-					<br>
-					<li><a href="mailto:seung@stud.uni-heidelberg.de"target="_blank">roun.sk@gmail.com</a></li>
-				</p>
+					<p>
+						Prof.Katja Mombaur
+						<br>
+						<li><a href="mailto:katja.mombaur@iwr.uni-heidelberg.de"target="_blank">katja.mombaur@iwr.uni-heidelberg.de</a></li>
+						<br>
+						Monika Harant
+						<br>
+						<li><a href="mailto:harant.monika@gmx.net" target="_blank">harant.monika@gmx.net</a></li>
+						<br>
+						Kuroun Seung
+						<br>
+						<li><a href="mailto:seung@stud.uni-heidelberg.de"target="_blank">roun.sk@gmail.com</a></li>
+					</p>
 				<div class="csc-default">
 					<div class="divider"><hr></div>
 				</div>
 				<div class="head2">Link:</div>
-				<p>
-					<li><a href="http://www.uni-heidelberg.de/"target="_blank">Universität Heidelberg</a></li>
-					<br>
-					<li><a href="http://www.iwr.uni-heidelberg.de/" target="_blank">Interdisciplinary Center for Scientific Computing (IWR)</a></li>
-					<br>
-					<li><a href="http://ornella.iwr.uni-heidelberg.de/ROBOTICSLAB/index.php?l=en"target="_blank">Robotics Lab</a></li>
-				</p>
+					<p>
+						<li><a href="http://www.uni-heidelberg.de/"target="_blank">Universität Heidelberg</a></li>
+						<br>
+						<li><a href="http://www.iwr.uni-heidelberg.de/" target="_blank">Interdisciplinary Center for Scientific Computing (IWR)</a></li>
+						<br>
+						<li><a href="http://ornella.iwr.uni-heidelberg.de/ROBOTICSLAB/index.php?l=en"target="_blank">Robotics Lab</a></li>
+					</p>
 				<div class="csc-default">
 					<div class="divider"><hr></div>
 				</div>
 				<div class="head2">Documentation:</div>
-				<p>
-					<li><%=link_to("Presentation.pdf",:controller=>"application",:action=>"download_presentation")%></li>
-					<br>
-					<li><%=link_to("Source Code.rar",:controller=>"application",:action=>"download_code")%></li>
-					<br>
-					<li><%=link_to("Poster.pdf",:controller=>"application",:action=>"download_poster")%></li>
-				</p>
+					<p>
+						<li><%=link_to("Presentation.pdf",:controller=>"/application",:action=>"download_presentation")%></li>
+						<br>
+						<li><%=link_to("Source Code.rar",:controller=>"/application",:action=>"download_code")%></li>
+						<br>
+						<li><%=link_to("Poster.pdf",:controller=>"/application",:action=>"download_poster")%></li>
+					</p>
+				<% if admin_signed_in? %>
+				<div class="head2">Admin Area:</div>
+					<p>
+		    			<li><%=link_to("Log Out",destroy_admin_session_path)%></li>
+	    			</p>
+    			<%end%>
 			</div>
 		</div>
 	</div>

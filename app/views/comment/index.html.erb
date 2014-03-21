@@ -48,12 +48,13 @@
 				<div><%=link_to("Reply(#{UserReply.where('user_comment_id=?',c.id).count})",reply_index_path(:key_com => c.id))%></div>	
 			</td>
 		</tr>
-		
-		<%= form_for(@comment, :url => { :action => "destroy",:key_com=>c.id }, :method => :delete) do |f| %>
-			<span style="margin-left: 700px;">
-				<%=image_submit_tag("delete.png", :onclick => "return confirm('Are you sure to delete this comment?')")%>
-			</span>		
-		<%end%>	
+		<% if admin_signed_in? %>
+			<%= form_for(@comment, :url => { :action => "destroy",:key_com=>c.id }, :method => :delete) do |f| %>
+				<span style="margin-left: 700px;">
+					<%=image_submit_tag("delete.png", :onclick => "return confirm('Are you sure to delete this comment?')")%>
+				</span>		
+			<%end%>
+		<%end%>		
 	</table>
 	<div class="divider"><hr></div>
 	<%end%>

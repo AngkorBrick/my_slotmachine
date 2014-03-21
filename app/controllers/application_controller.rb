@@ -10,4 +10,5 @@ class ApplicationController < ActionController::Base
   def download_poster
     send_file "#{Rails.root}/app/assets/file/Poster.pdf"
   end
+
 end

@@ -1,6 +1,6 @@
 Myapp::Application.routes.draw do
 
-  root :to => 'top_page#index'
+  devise_for :admins
 
   get "about_team/index",to: "about_team#index",as: :about_team_index
   get "implement/index",to: "implement#index",as: :implement_index
@@ -11,14 +11,20 @@ Myapp::Application.routes.draw do
   get "comment/index",to: "comment#index",as: :comment_index
   get "reply/index",to: "replies#index",as: :reply_index
   
-  delete "comment/delete",to: "comment#destroy",as: :destroy_comment
-  delete "reply/delete",to: "replies#destroy",as: :destroy_reply  
+  devise_scope :admin do
+    match "kh-varwalter", to: "devise/sessions#new", as: :custom_admin_signin
+    authenticated :admin do
+      root :to => 'comment#index'
+      delete "comment/delete",to: "comment#destroy",as: :destroy_comment
+      delete "reply/delete",to: "replies#destroy",as: :destroy_reply  
+    end
+  end
   
   resources :comment,:replies
 
-  get "download/presentation",to: "application#download_presentation"
-  get "download/code",to: "application#download_code"
-  get "download/poster",to: "application#download_poster"
+  get "download/presentation",to: "application#download_presentation",as: :down_presentation
+  get "download/code",to: "application#download_code",as: :down_code
+  get "download/poster",to: "application#download_poster",as: :down_poster
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
@@ -69,7 +75,7 @@ Myapp::Application.routes.draw do
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
   # root :to => 'welcome#index'
-
+  root :to => 'top_page#index'
   # See how all your routes lay out with "rake routes"
 
   # This is a legacy wild controller route that's not recommended for RESTful applications.
