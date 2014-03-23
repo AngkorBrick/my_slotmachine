@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <p>Hello <%=@comment.name%>,</p>
+    <p>thank you for your comment at my project <b>"Lego NXT Slot Machine"</b>.</p>
+    <p style="margin-left: 10px;"><b><i><%=@comment.comment%></b></i></p>
+    <p>To access your comment, <%= link_to 'click here',@url%>.</p>
+    <p>Best regards,</p>
+    <p>Seung Kuroun</p>
+    <p>Website: http://www.angkorbrick.com</p>
+    <p>Email: roun.sk@gmail.com</p>
+    
+   
+  </body>
+</html>

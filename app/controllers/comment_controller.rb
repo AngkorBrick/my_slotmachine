@@ -11,10 +11,11 @@ class CommentController < ApplicationController
       respond_to do |format|
         if @comment.save
           #render :partial => 'comment', :object => @comment
-        format.html {
-            flash[:notice] ="Comment was successfully added."
-            redirect_to :controller=>"comment",:action => "index"
-          }
+          CommentReplyMailer.thank_comment(@comment.id).deliver
+          format.html {
+              flash[:notice] ="Comment was successfully added."
+              redirect_to :controller=>"comment",:action => "index"
+            }
           format.json { render json: @comment, status: :created, location: @comment }
         else
           format.html {   
