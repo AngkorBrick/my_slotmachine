@@ -16,11 +16,12 @@ class RepliesController < ApplicationController
     @reply = UserReply.new(params[:user_reply])
       respond_to do |format|
         if @reply.save
-        format.html {
-            flash[:notice] ="Reply was successfully added."
-            redirect_to :controller=>"replies",:action => "index",:key_com=>params[:key_com]
-          }
-          format.json { render json: @reply, status: :created, location: @reply }
+          CommentReplyMailer.notify_admin_reply(@comment.id,@reply.id).deliver
+          format.html {
+              flash[:notice] ="Reply was successfully added."
+              redirect_to :controller=>"replies",:action => "index",:key_com=>params[:key_com]
+            }
+            format.json { render json: @reply, status: :created, location: @reply }
         else
           format.html { 
             render action: "index"

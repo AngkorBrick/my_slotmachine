@@ -12,6 +12,7 @@ class CommentController < ApplicationController
         if @comment.save
           #render :partial => 'comment', :object => @comment
           CommentReplyMailer.thank_comment(@comment.id).deliver
+          CommentReplyMailer.notify_admin(@comment.id).deliver
           format.html {
               flash[:notice] ="Comment was successfully added."
               redirect_to :controller=>"comment",:action => "index"

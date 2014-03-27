@@ -4,9 +4,9 @@
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
   </head>
   <body>
-    <p>Hello <%=@comment.name%>,</p>
-    <p>thank you for your comment at my project <b>*Lego NXT Slot Machine</b>.</p>
-    <blockquote><i>"<%=@comment.comment%>"</i></blockquote>
+    <p>Hello <%=@reply.name%>,</p>
+    <p>thank you for your reply to the comment at <b>*Lego NXT Slot Machine</b>.</p>
+    <blockquote><i>"<%=@reply.reply%>"</i></blockquote>
     <p>**Please do not reply to this email. To access your comment, <%= link_to 'click here',@url%>.</p>
     <p>Best regards,</p>
     <p>Seung Kuroun</p>

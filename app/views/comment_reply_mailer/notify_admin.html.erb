@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    	<p>You have received a comment at project <b>*Lego NXT Slot Machine</b>.</p>
+    	<blockquote><i>
+    		<p><%=@comment.created_at%>, <%=@comment.name%>(<%=@comment.email%>)</p>
+    		<p>"<%=@comment.comment%>"</p>
+    	</i></blockquote>
+    <p>**Please do not reply to this email. To access the comment page, <%= link_to 'click here',@url%>.</p>
+  </body>
+</html>
