@@ -6,7 +6,11 @@
   <body>
     <p>Hello <%=@comment.name%>,</p>
     <p>thank you for your comment at my project <b>*Lego NXT Slot Machine</b>.</p>
-    <blockquote><i>"<%=@comment.comment%>"</i></blockquote>
+    <blockquote><i>
+    	<%@avatar="https://dl.dropboxusercontent.com/u/65733650/hosting/avatar-brown.png"%>
+		<%=image_tag(@avatar,:size=>"60x60",:style=>"float:left;margin-right:5px;")%>
+    	"<%=@comment.comment%>"
+    </i></blockquote>
     <p>**Please do not reply to this email. To access your comment, <%= link_to 'click here',@url%>.</p>
     <p>Best regards,</p>
     <p>Seung Kuroun</p>

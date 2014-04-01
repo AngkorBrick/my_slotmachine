@@ -25,6 +25,7 @@ Myapp::Application.routes.draw do
   get "download/presentation",to: "application#download_presentation",as: :down_presentation
   get "download/code",to: "application#download_code",as: :down_code
   get "download/poster",to: "application#download_poster",as: :down_poster
+  
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
