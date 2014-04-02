@@ -7,7 +7,7 @@
     	<p>Hello <%=@comment.name%>,</p>
     	<p>There is a reply to you at project <b>*Lego NXT Slot Machine</b>.</p>
     	<blockquote><i>
-    		<div style="font-weight: bold;">
+    		<div style="font-weight: bold;margin-bottom: 20px;">
 	    		<p><%=@comment.created_at%>, <%=@comment.name%>(<%=@comment.email%>)</p>
 	    		<p>
 	    			<%@avatar="https://dl.dropboxusercontent.com/u/65733650/hosting/avatar-brown.png"%>
@@ -15,6 +15,7 @@
 	    			"<%=@comment.comment%>"
 	    		</p>
     		</div>
+    		<br>
     		<div style="margin-left: 50px;">
 			    <% unless @reply_list.nil? || @reply_list.empty? %>
 			    	<%@reply_list.each_with_index do |r,index| %>
@@ -29,9 +30,10 @@
 				    				<p><%=image_tag(@color,:size=>"40x40",:style=>"float:left;margin-right:5px;")%>"<%=r.reply%>"</p>
 			    				</div>
 			    			<% else %>
-			    				<p><%=r.created_at%>, <%=r.name%>(<%=r.email%>)</p>
+			    				<p style="font-weight: bold;"><%=r.created_at%>, <%=r.name%>(<%=r.email%>)</p>
 				    			<p><%=image_tag(@color,:size=>"40x40",:style=>"float:left;margin-right:5px;")%>"<%=r.reply%>"</p>
 			    			<%end%>
+			    			<br>
 			    	<%end%>
 			    <%end%>	
 		    </div>	

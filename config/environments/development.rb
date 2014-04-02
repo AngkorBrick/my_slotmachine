@@ -42,8 +42,8 @@ Myapp::Application.configure do
     address: "smtp.gmail.com",
     port: 587,
     domain: "gmail.com",
-    user_name: "kubalyla@gmail.com",
-    password: "cltag0987",
+    user_name: "sk.slotmachine@gmail.com",
+    password: "skslot675394",
     authentication: "plain",
     enable_starttls_auto: true
   }
