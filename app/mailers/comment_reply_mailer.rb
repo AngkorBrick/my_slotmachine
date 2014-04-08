@@ -7,7 +7,7 @@ class CommentReplyMailer < ActionMailer::Base
     if Rails.env.development?
       @url="http://localhost:3000/reply/index?key_com=#{comment_id}"
     else
-      @url="reply/index?key_com=#{comment_id}"
+      @url="sk-slotmachine.ap01.aws.af.cm/reply/index?key_com=#{comment_id}"
     end
     mail(to: @comment.email, subject: 'Thanks for your comment!')
   end
@@ -16,7 +16,7 @@ class CommentReplyMailer < ActionMailer::Base
     if Rails.env.development?
       @url="http://localhost:3000/reply/index?key_com=#{comment_id}"
     else
-      @url="reply/index?key_com=#{comment_id}"
+      @url="http://sk-slotmachine.ap01.aws.af.cm/reply/index?key_com=#{comment_id}"
     end
     mail(to: "roun.sk@gmail.com", subject: "SK Slot Machine: Commented from #{@comment.email}")
   end
@@ -28,7 +28,7 @@ class CommentReplyMailer < ActionMailer::Base
       if Rails.env.development?
         @url="http://localhost:3000/reply/index?key_com=#{comment_id}"
       else
-        @url="reply/index?key_com=#{comment_id}"
+        @url="http://sk-slotmachine.ap01.aws.af.cm/reply/index?key_com=#{comment_id}"
       end
       mail(to: "roun.sk@gmail.com", subject: "SK Slot Machine: Replied from #{@reply.email}")
   end
@@ -40,7 +40,7 @@ class CommentReplyMailer < ActionMailer::Base
       if Rails.env.development?
         @url="http://localhost:3000/reply/index?key_com=#{comment_id}"
       else
-        @url="reply/index?key_com=#{comment_id}"
+        @url="http://sk-slotmachine.ap01.aws.af.cm/reply/index?key_com=#{comment_id}"
       end
       mail(to: @comment.email, subject: "You've got a reply at SK Slot Machine Project")
   end
@@ -55,16 +55,17 @@ class CommentReplyMailer < ActionMailer::Base
       if Rails.env.development?
         @url="http://localhost:3000/reply/index?key_com=#{comment_id}"
       else
-        @url="reply/index?key_com=#{comment_id}"
+        @url="http://sk-slotmachine.ap01.aws.af.cm/reply/index?key_com=#{comment_id}"
       end
       mail(to: sent_mail, subject: "#{@reply.name} replied on a comment at SK Slot Machine Project")
   end
   
   def self.multi_receivers(comment_id,reply_id)
+    @comment=UserComment.find(comment_id)
     @reply=UserReply.find(reply_id)
     @to_send=UserReply.select_filter(comment_id) 
     @to_send.each_with_index do |i|
-      unless i.email==@reply.email || i.email=="roun.sk@gmail.com"
+      unless i.email==@reply.email || i.email=="roun.sk@gmail.com" || i.email==@comment.email
         notify_replyer(i.email,i.name,@reply.name,comment_id,reply_id).deliver
       end
     end
@@ -74,7 +75,7 @@ class CommentReplyMailer < ActionMailer::Base
     if Rails.env.development?
         @url="http://localhost:3000/reply/index?key_com=#{page}"
     else
-        @url="reply/index?key_com=#{page}"
+        @url="http://sk-slotmachine.ap01.aws.af.cm//reply/index?key_com=#{page}"
     end
     @get_reply=name
     @comment=UserComment.find(page)

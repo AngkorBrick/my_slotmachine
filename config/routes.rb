@@ -12,7 +12,7 @@ Myapp::Application.routes.draw do
   get "reply/index",to: "replies#index",as: :reply_index
   
   devise_scope :admin do
-    match "kh-varwalter", to: "devise/sessions#new", as: :custom_admin_signin
+    match "kh-verwalter", to: "devise/sessions#new", as: :custom_admin_signin
     authenticated :admin do
       root :to => 'comment#index'
       delete "comment/delete",to: "comment#destroy",as: :destroy_comment

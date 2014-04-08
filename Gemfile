@@ -69,3 +69,6 @@ gem 'bcrypt-ruby', '~> 3.0.0'
 # To use debugger
 # gem 'debugger'
 gem "breadcrumbs_on_rails"
+gem 'jquery-rails'
+gem 'jquery-ui-rails'
+gem 'jquery_mobile_rails'

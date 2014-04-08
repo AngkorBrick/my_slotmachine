@@ -11,7 +11,7 @@
 	<%= form_for @comment,:url => url_for(:controller => 'comment',:action => 'create') do |f| %>
                 <table  width="100%" border="0" style="margin-top: 20px;font-size: 1.4em;">
                   <tr>
-                    <th><span class="hiss">*</span> <%= f.label :name %></th>
+                    <th><span class="hiss">*</span><%= f.label :name %></th>
                     <td><%= f.text_field :name, { :size => 60 } %></td>
                   </tr>
                  <tr>
