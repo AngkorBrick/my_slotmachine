@@ -1,0 +1,69 @@
+
+<%= content_for :contents do %>
+	<div class="ui-corner-all custom-corners">
+	  <div class="ui-bar ui-bar-a">
+	    <h3>Reel Design</h3>
+	  </div>
+	  <div class="ui-body ui-body-a">
+	    <p style="text-align: justify;">
+			There are three pictures on each reel: Apple, Banana, Mango. 
+			The reels are constructed with three motors. NXT motors have a class 
+			for accessing NXT motor ports. To be useful, a motor must be connected 
+			to one of the three NXT motor ports. This class provides an instance for each port. 
+			They are: Motor.A, Motor.B and Motor.C. Each of these three objects is an instance 
+			of the class NXTRegulatedMotor. This class provides methods for controlling the motor, 
+			and for finding out what the motor is doing.
+			<em>(Reference: Tutorial of <a href="http://lejos.sourceforge.net/nxt/nxj/tutorial/MotorTutorial/ControllingMotors.htm" target="_blank">Controlling the Motors</a>)</em>
+		</p>
+		
+		<a href="#popupParis1" data-rel="popup" data-position-to="window" data-transition="fade">
+			<%=image_tag("motor1_3.jpg",:class=>"popphoto",:style=>"width:100%;")%>
+		</a>
+		<div data-role="popup" id="popupParis1" data-overlay-theme="b" data-theme="b" data-corners="false">
+    		<a href="#" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn-a ui-icon-delete ui-btn-icon-notext ui-btn-right">Close</a>
+    		<%=image_tag("motor1_3.jpg",:class=>"popphoto",:style=>"max-height:512px;")%>
+		</div>
+		
+		<a href="#popupParis2" data-rel="popup" data-position-to="window" data-transition="fade">
+			<%=image_tag("SlideB.png",:class=>"popphoto",:style=>"width:100%;")%>
+		</a>
+		<div data-role="popup" id="popupParis2" data-overlay-theme="b" data-theme="b" data-corners="false">
+    		<a href="#" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn-a ui-icon-delete ui-btn-icon-notext ui-btn-right">Close</a>
+    		<%=image_tag("SlideB.png",:class=>"popphoto",:style=>"max-height:512px;")%>
+		</div>
+		<div class="divider"><hr></div>
+		<p style="text-align: justify">
+			Three Reels: each reel is divided in three equal angles (120 of 360 degree)
+		</p>
+		
+		<a href="#popupParis3" data-rel="popup" data-position-to="window" data-transition="fade">
+			<%=image_tag("SlideG.png",:class=>"popphoto",:style=>"width:100%;")%>
+		</a>
+		<div data-role="popup" id="popupParis3" data-overlay-theme="b" data-theme="b" data-corners="false">
+    		<a href="#" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn-a ui-icon-delete ui-btn-icon-notext ui-btn-right">Close</a>
+    		<%=image_tag("SlideG.png",:class=>"popphoto",:style=>"max-height:512px;")%>
+		</div>
+		<div class="divider"><hr></div>
+		<p style="text-align: justify;">
+			Three picture planes: Apple, Banana, Mango are cut and
+			designed to be parallel with size and angle of the reel.
+		</p>
+		
+		<a href="#popupParis4" data-rel="popup" data-position-to="window" data-transition="fade">
+			<%=image_tag("SlideH.png",:class=>"popphoto",:style=>"width:100%;")%>
+		</a>
+		<div data-role="popup" id="popupParis4" data-overlay-theme="b" data-theme="b" data-corners="false">
+    		<a href="#" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn-a ui-icon-delete ui-btn-icon-notext ui-btn-right">Close</a>
+    		<%=image_tag("SlideH.png",:class=>"popphoto",:style=>"max-height:512px;")%>
+		</div>
+		<a href="#popupParis5" data-rel="popup" data-position-to="window" data-transition="fade">
+			<%=image_tag("9b.jpg",:class=>"popphoto",:style=>"width:100%;")%>
+		</a>
+		<div data-role="popup" id="popupParis5" data-overlay-theme="b" data-theme="b" data-corners="false">
+    		<a href="#" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn-a ui-icon-delete ui-btn-icon-notext ui-btn-right">Close</a>
+    		<%=image_tag("9b.jpg",:class=>"popphoto",:style=>"max-height:512px;")%>
+		</div>
+	  </div>
+	</div>
+	
+<%end%>

@@ -6,6 +6,7 @@
   	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.css">
 	<script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
 	<script src="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.js"></script>
+	<%= stylesheet_link_tag "mobile_content" %>
 	<style>
 			/* Adjust the width of the left reveal menu. */
 		#demo-page #left-panel.ui-panel {
@@ -109,11 +110,18 @@
 	</style>
 </head>
 <body>
-<div data-role="page" id="demo-page" data-url="demo-page">
+<div data-role="page" id="demo-page">
     <div data-role="header">
     	<%=image_tag("Robo_Head.jpg",:style=>"width:100%;")%>
         <h1>Robotics Pratical</h1>
         <a href="#left-panel" data-icon="bars" data-iconpos="notext" data-shadow="false" data-iconshadow="false">Menu</a>
+       	<div data-role="navbar">
+	        <ul>
+	            <li style="width: 20%;"><%=link_to "<<",@previous%></li>
+	            <li style="width: 60%;"><a href="#"><%=@bc%></a></li>
+	            <li style="width: 20%;"><%=link_to ">>",@next%></li>
+	        </ul>
+	    </div><!-- /navbar -->
     </div><!-- /header -->
     <div role="main" class="ui-content">
         <div class="article">
@@ -124,7 +132,7 @@
     </div><!-- /content -->
     <div data-role="panel" id="left-panel">
         <ul data-role="listview">
-            <li><%=link_to("Basic Information",top_page_index_path)%></li>
+            <li><%=link_to("Basic Information",root_path)%></li>
 			<li><%=link_to("Construction Part1",construction1_index_path)%></li>
 			<li><%=link_to("Construction Part2",construction2_index_path)%></li>
 			<li><%=link_to("Programming and Algorithm",programming_index_path)%></li>
@@ -166,6 +174,13 @@
         </ul>
     </div><!-- /panel -->
     <div data-role="footer">
+    	<div data-role="navbar">
+	        <ul>
+	            <li style="width: 20%;"><a href="#" disabled="true">&lt;&lt;</a></li>
+	            <li style="width: 60%;"><a href="#"><%=@bc%></a></li>
+	            <li style="width: 20%;"><a href="#">&gt;&gt;</a></li>
+	        </ul>
+	    </div><!-- /navbar -->
     	<%=image_tag("schriftzug_uni_heidelberg.jpg",:style=>"width:100%;")%>
 	    <h1>by Kuroun Seung 2012 - 2014.</h1>
 	</div>
