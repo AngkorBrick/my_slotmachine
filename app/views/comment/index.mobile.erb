@@ -1,0 +1,48 @@
+
+<%= content_for :contents do %>
+	<div class="ui-corner-all custom-corners">
+	  <div class="ui-bar ui-bar-a">
+	    <h3>Write your comment here</h3>
+	  </div>
+	  <div class="ui-body ui-body-a">
+			<div class="ui-field-contain">
+			<%= form_for @comment,:url => url_for(:controller => 'comment',:action => 'create') do |f| %>
+               
+                    <%= f.text_field :name, {:placeholder=> "Name", "data-clear-btn"=>true} %>
+               
+                    <%= f.email_field :email, { :placeholder=> "Email","data-clear-btn"=>true } %>
+               
+                   <%= f.text_area :comment, { :placeholder=> "Comment"} %>
+                  
+                  <%= f.submit "Send",{:class=>"ui-shadow ui-btn ui-corner-all"} %>
+          <% end %>
+          </div>
+		</div>
+	</div>
+	<br>
+	<div class="ui-corner-all custom-corners">
+	  <div class="ui-bar ui-bar-a">
+	    <h3>Acknowledgement</h3>
+	  </div>
+	  <div class="ui-body ui-body-a">
+		<p style="text-align:justify;">
+			This project would not be successful without many helps 
+			and advices from many people. First, I would like to extend my sincere appreciation and 
+			thankfulness to <strong>Prof. Katja Mombaur</strong> for giving me a chance to join this wonderful 
+			internship, and since I could stay in Heidelberg only for a short time, she allowed me to finish 
+			the project in my country, Cambodia. Additionally, in the process of doing the project, 
+			I would like to greatly thank <strong>Monika Harant</strong> and <strong>Felix Aller</strong> 
+			who always helped me solving any difficult problems and provided me with the most important 
+			materials.
+		</p>
+		<div class="divider"><hr></div>
+		<a href="#popupParis18" data-rel="popup" data-position-to="window" data-transition="fade">
+				<%=image_tag("2Logos.JPG",:class=>"popphoto",:style=>"width:100%;")%>
+			</a>
+			<div data-role="popup" id="popupParis18" data-overlay-theme="b" data-theme="b" data-corners="false">
+	    		<a href="#" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn-a ui-icon-delete ui-btn-icon-notext ui-btn-right">Close</a>
+	    		<%=image_tag("2Logos.jpg",:class=>"popphoto",:style=>"max-height:512px;")%>
+			</div>	
+		</div>
+	</div>
+<%end%>

@@ -20,6 +20,8 @@ class ApplicationController < ActionController::Base
   end
   helper_method :mobile_device?
   def prepare_for_mobile
-    request.format = :mobile if mobile_device?
+    unless params[:action]=='create' || params[:action]=='destroy'
+      request.format = :mobile if mobile_device?
+    end
   end
 end

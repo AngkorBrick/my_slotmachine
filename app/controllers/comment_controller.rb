@@ -3,6 +3,9 @@ class CommentController < ApplicationController
       add_breadcrumb "Comment and Feedback", :comment_index_path,:title => "Back to Comment and Feedback Page"
       @comment = UserComment.new
       @view_comment=UserComment.view
+      @bc="Comment and Feedback"
+      @previous=about_team_index_path
+      @next=root_path
   end 
  
   def create
@@ -19,8 +22,13 @@ class CommentController < ApplicationController
             }
           format.json { render json: @comment, status: :created, location: @comment }
         else
-          format.html {   
-            render action: "index"
+          format.html {
+            if mobile_device? 
+              flash[:alert] = "Comment cannot be sent. Wrong input field."  
+              redirect_to :controller=>"comment",:action => "index"
+            else
+              render action: "index"
+            end
           }
           format.json { render json: @comment.errors, status: :unprocessable_entity }
         end

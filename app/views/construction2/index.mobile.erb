@@ -1,0 +1,81 @@
+
+<%= content_for :contents do %>
+	<div class="ui-corner-all custom-corners">
+	  <div class="ui-bar ui-bar-a">
+	    <h3>Coin Slot Design</h3>
+	  </div>
+	  <div class="ui-body ui-body-a">
+	    <p style="text-align: justify;">
+			The NXT Color Sensor is able to perform three unique functions. 
+			It acts as a color sensor, distinguishing among six colors; it works as a light 
+			sensor, detecting light intensities – both reflected light and ambient light; 
+			and it works as a color lamp, emitting red, green, or blue light. When Color 
+			sensor programms in Light Sensor Mode, this sensor has the exact same 
+			functionality as described above. However, it can also be programmed in Color 
+			Sensor mode. When doing so, the sensor can detect 6 different colors: Black, 
+			White, Blue, Green, Yellow and Red. A third functionality of this device is 
+			Lamp Mode, where it functions as a basic light, optionally Red, Green or Blue.
+			<em>(Reference:<a href="http://robotsquare.com/2012/02/18/understanding-nxt-versions/" target="_blank">Color Sensor</a>)</em>
+		</p>
+		
+		<a href="#popupParis5" data-rel="popup" data-position-to="window" data-transition="fade">
+			<%=image_tag("SlideC.png",:class=>"popphoto",:style=>"width:100%;")%>
+		</a>
+		<div data-role="popup" id="popupParis5" data-overlay-theme="b" data-theme="b" data-corners="false">
+    		<a href="#" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn-a ui-icon-delete ui-btn-icon-notext ui-btn-right">Close</a>
+    		<%=image_tag("SlideC.png",:class=>"popphoto",:style=>"max-height:512px;")%>
+		</div>
+		
+		<div class="divider"><hr></div>
+		<p style="text-align: justify">
+			The coin slot is designed with a Color Sensor which distinguishes the color between the coin 
+			and the wall of the coin slot when the coin runs across the sensor.
+		</p>
+		
+		<a href="#popupParis6" data-rel="popup" data-position-to="window" data-transition="fade">
+			<%=image_tag("SlideQ.png",:class=>"popphoto",:style=>"width:100%;")%>
+		</a>
+		<div data-role="popup" id="popupParis6" data-overlay-theme="b" data-theme="b" data-corners="false">
+    		<a href="#" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn-a ui-icon-delete ui-btn-icon-notext ui-btn-right">Close</a>
+    		<%=image_tag("SlideQ.png",:class=>"popphoto",:style=>"max-height:512px;")%>
+		</div>
+		
+	  </div>
+	</div>
+	<br>
+	<div class="ui-corner-all custom-corners">
+	  <div class="ui-bar ui-bar-a">
+	    <h3>Lever Design</h3>
+	  </div>
+	  <div class="ui-body ui-body-a">
+	    <p style="text-align: justify;">
+			The lever is designed with a touch sensor. The Touch Sensor gives the robot a sense of touch. 
+			The Touch Sensor detects when it is being pressed by something and when it is released again. 
+			After putting a coin in the coin slot, players can push the lever to make the reels rotating.
+		</p>
+		
+		<a href="#popupParis7" data-rel="popup" data-position-to="window" data-transition="fade">
+			<%=image_tag("SlideD.png",:class=>"popphoto",:style=>"width:100%;")%>
+		</a>
+		<div data-role="popup" id="popupParis7" data-overlay-theme="b" data-theme="b" data-corners="false">
+    		<a href="#" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn-a ui-icon-delete ui-btn-icon-notext ui-btn-right">Close</a>
+    		<%=image_tag("SlideD.png",:class=>"popphoto",:style=>"max-height:512px;")%>
+		</div>
+		
+		<div class="divider"><hr></div>
+		<p style="text-align: justify">
+			The lever is also designed with a <em>tension spring</em>. After the player pulls the lever, 
+			the spring pulls the lever back to its original position.
+		</p>
+		
+		<a href="#popupParis8" data-rel="popup" data-position-to="window" data-transition="fade">
+			<%=image_tag("SlideR.png",:class=>"popphoto",:style=>"width:100%;")%>
+		</a>
+		<div data-role="popup" id="popupParis8" data-overlay-theme="b" data-theme="b" data-corners="false">
+    		<a href="#" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn-a ui-icon-delete ui-btn-icon-notext ui-btn-right">Close</a>
+    		<%=image_tag("SlideR.png",:class=>"popphoto",:style=>"max-height:512px;")%>
+		</div>
+		
+	  </div>
+	</div>
+<%end%>

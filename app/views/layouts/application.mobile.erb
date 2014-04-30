@@ -6,6 +6,7 @@
   	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.css">
 	<script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
 	<script src="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.js"></script>
+	<!--<script src="//www.youtube.com/player_api"></script>-->
 	<%= stylesheet_link_tag "mobile_content" %>
 	<style>
 			/* Adjust the width of the left reveal menu. */
@@ -125,8 +126,8 @@
     </div><!-- /header -->
     <div role="main" class="ui-content">
         <div class="article">
-            <p id="notice"><%= notice %></p>
-    		<p id="alert"><%= alert %></p>
+            <p id="notice" style="color: green;"><%= notice %></p>
+    		<p id="alert" style="color: red;" ><%= alert %></p>
 	    	<%= yield :contents %>
         </div><!-- /article -->
     </div><!-- /content -->
@@ -176,9 +177,9 @@
     <div data-role="footer">
     	<div data-role="navbar">
 	        <ul>
-	            <li style="width: 20%;"><a href="#" disabled="true">&lt;&lt;</a></li>
+	           	<li style="width: 20%;"><%=link_to "<<",@previous%></li>
 	            <li style="width: 60%;"><a href="#"><%=@bc%></a></li>
-	            <li style="width: 20%;"><a href="#">&gt;&gt;</a></li>
+	            <li style="width: 20%;"><%=link_to ">>",@next%></li>
 	        </ul>
 	    </div><!-- /navbar -->
     	<%=image_tag("schriftzug_uni_heidelberg.jpg",:style=>"width:100%;")%>

@@ -1,0 +1,104 @@
+<%= content_for :contents do %>
+<script>
+	$( "#vid_click" ).click(function() {
+	  $( "#popupVideo iframe" )
+	  	.attr("src","//www.youtube.com/embed/GqDny7sMiSs?enablejsapi=1");
+	  	alert("hello");
+	});
+	// popup examples
+	$( document ).on( "pagecreate", function() {
+	    // The window width and height are decreased by 30 to take the tolerance of 15 pixels at each side into account
+	    function scale( width, height, padding, border ) {
+	        var scrWidth = $( window ).width() - 30,
+	            scrHeight = $( window ).height() - 30,
+	            ifrPadding = 2 * padding,
+	            ifrBorder = 2 * border,
+	            ifrWidth = width + ifrPadding + ifrBorder,
+	            ifrHeight = height + ifrPadding + ifrBorder,
+	            h, w;
+	        if ( ifrWidth < scrWidth && ifrHeight < scrHeight ) {
+	            w = ifrWidth;
+	            h = ifrHeight;
+	        } else if ( ( ifrWidth / scrWidth ) > ( ifrHeight / scrHeight ) ) {
+	            w = scrWidth;
+	            h = ( scrWidth / ifrWidth ) * ifrHeight;
+	        } else {
+	            h = scrHeight;
+	            w = ( scrHeight / ifrHeight ) * ifrWidth;
+	        }
+	        return {
+	            'width': w - ( ifrPadding + ifrBorder ),
+	            'height': h - ( ifrPadding + ifrBorder )
+	        };
+	    };
+	    $( ".ui-popup iframe" )
+	        .attr( "width", 0 )
+	        .attr( "height", "auto" );
+	    $( "#popupVideo" ).on({
+	        popupbeforeposition: function() {
+	            // call our custom function scale() to get the width and height
+	            var size = scale( 497, 298, 15, 1 ),
+	                w = size.width,
+	                h = size.height;
+	            $( "#popupVideo iframe" )
+	                .attr( "width", w )
+	                .attr( "height", h );
+	        },
+	        popupafterclose: function() {
+	            $( "#popupVideo iframe" )
+	                .attr( "width", 0 )
+	                .attr( "height", 0 )
+	            	.attr("src","");			    	
+	                 
+	        }
+	    });
+	});
+</script>
+<style>
+iframe {
+    border: none;
+}
+</style>
+	<div class="ui-corner-all custom-corners">
+	  <div class="ui-bar ui-bar-a">
+	    <h3>Challenges and Future Work</h3>
+	  </div>
+	  <div class="ui-body ui-body-a">
+	    <p style="text-align: justify;">
+			Programming the reel rotation was one of the challenges of my project because there were 
+			a lot of changes in that programming code and the rule of giving score. I spent much time 
+			on how to protect the motor task from user manipulation or unwanted operation while it is executed. 
+			Furthermore, conditions of giving score are also complicated. Although some programming languages 
+			are quite similar, the same command sometimes gives a different result. In addition, I'd thought 
+			of using a touch sensor for the coin slot, but the coin didn't fall smoothly, so I thought of 
+			using a color sensor instead of a touch sensor, and it could finally work efficiently. 
+			<br>
+			<br>
+			I wish I could have had more time to develop a slot machine with full performances such as 
+			improving the coin slot so that it is able to calculate the coin input, and pay some coins back 
+			to the player if they earn some scores, but due to my short stay in Heidelberg I could not 
+			realize these ideas.
+		</p>
+		
+	  </div>
+	</div>
+	<br>
+	<div class="ui-corner-all custom-corners">
+	  <div class="ui-bar ui-bar-a">
+	    <h3>Let's play slot machine!</h3>
+	  </div>
+	  <div class="ui-body ui-body-a">
+		<div class="wrapper" style="width:100%;height:100%;margin:0 auto;">
+    		<div class="h_iframe" style="position:relative;">
+		        <!-- a transparent image is preferable -->
+		        <img class="ratio" style="display:block;width:100%;height:auto;" src="http://placehold.it/16x9"/>
+		        <iframe style="position:absolute;top:0;left:0;width:100%; height:100%;" src="http://www.youtube.com/embed/ltlpe3_DkpU?feature=player_detailpage" frameborder="0" allowfullscreen></iframe>
+		    </div>
+		</div>
+		<br>
+		<p>
+			If you cannot view the video, <a href="http://youtu.be/GqDny7sMiSs"target="_blank">click here.</a>
+		</p>
+	  </div>
+	</div>
+<%end%>

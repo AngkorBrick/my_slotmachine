@@ -9,6 +9,7 @@ Myapp::Application.routes.draw do
   get "construction1/index",to: "construction1#index",as: :construction1_index
   get "top_page/index",to: "top_page#index",as: :top_page_index
   get "comment/index",to: "comment#index",as: :comment_index
+  post "comment/create",to: "comment#create",as: :comment_create
   get "reply/index",to: "replies#index",as: :reply_index
   
   devise_scope :admin do
@@ -20,7 +21,8 @@ Myapp::Application.routes.draw do
     end
   end
   
-  resources :comment,:replies
+  #resources :comment
+  resources :replies
 
   get "download/presentation",to: "application#download_presentation",as: :down_presentation
   get "download/code",to: "application#download_code",as: :down_code
