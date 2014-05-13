@@ -29,23 +29,30 @@
 		    <li>
 				<% if admin_signed_in? %>
 						<%= form_for(@comment, :url => { :action => "destroy",:key_com=>c.id }, :method => :delete,:id=>c.id) do |f| %>
-							<%=image_submit_tag("delete.png", :onclick => "return confirm('Are you sure to delete this comment?')")%>
+							<div style="text-align: right;">
+								<%=image_submit_tag("delete.png", :onclick => "return confirm('Are you sure to delete this comment?')")%>
+							</div>
 						<%end%>
-				<%end%>		
-			    <h2><%= c.name %></h2>
+				<%end%>
+				<p style="text-align: right;">
+					<%= c.created_at%>
+				</p>
+			    <h2><%= c.name%></h2>
 			    <p style="white-space: normal;">
 			    	<%if index % 2 !=0 %>
 			    		<%=image_tag("avatar-grey.png",:align=>"left",:style=>"width:20%;margin-right:10px;")%>
 			    	<%else%>
 			    		<%=image_tag("avatar-pink.png",:align=>"left",:style=>"width:20%;margin-right:10px;")%>
 			    	<%end%>
+			    	<%=link_to c.email,"mailto:#{c.email}"%>
+			    	<br />
 			    	<%= c.comment%>
 			    </p>
-			    <p class="ui-li-aside">
+			    <!--<p class="ui-li-aside">
 			    	<strong><%= c.created_at%></strong>
-			    </p>
+			    </p>-->
 			    <p style="text-align: right;">
-			    	<%=link_to("Reply(#{UserReply.where('user_comment_id=?',c.id).count})",reply_index_path(:key_com => c.id),:class=>"ui-btn ui-btn-inline ui-corner-all")%>
+			    	<%=link_to("Reply(#{UserReply.where('user_comment_id=?',c.id).count})",{:controller=>"replies",:action => "index",:key_com=>c.id},:class=>"ui-btn ui-btn-inline ui-corner-all")%>
 			    </p>
 			        
 		    </li>

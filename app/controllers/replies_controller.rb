@@ -21,20 +21,20 @@ class RepliesController < ApplicationController
           unless @reply.email==@comment.email
             CommentReplyMailer.notify_commenter(@comment.id,@reply.id).deliver
           end
-          #@to_send.each_with_index do |i|
-           # unless i.email==@reply.email || i.email=="roun.sk@gmail.com"
-              #CommentReplyMailer.notify_replyer(@comment.id,@reply.id,i.email,i.name).deliver
-               CommentReplyMailer.multi_receivers(@comment.id,@reply.id)
-           # end
-          #end
+          CommentReplyMailer.multi_receivers(@comment.id,@reply.id)
           format.html {
               flash[:notice] ="Reply was successfully added."
               redirect_to :controller=>"replies",:action => "index",:key_com=>params[:key_com]
             }
-            format.json { render json: @reply, status: :created, location: @reply }
+          format.json { render json: @reply, status: :created, location: @reply }
         else
           format.html { 
-            render action: "index"
+            if mobile_device? 
+              flash[:alert] = "Reply cannot be sent. Wrong input field."  
+              redirect_to :controller=>"replies",:action => "index",:key_com=>params[:key_com]
+            else
+              render action: "index"
+            end
           }
           format.json { render json: @reply.errors, status: :unprocessable_entity }
         end

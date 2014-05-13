@@ -116,13 +116,21 @@
     	<%=image_tag("Robo_Head.jpg",:style=>"width:100%;")%>
         <h1>Robotics Pratical</h1>
         <a href="#left-panel" data-icon="bars" data-iconpos="notext" data-shadow="false" data-iconshadow="false">Menu</a>
-       	<div data-role="navbar">
-	        <ul>
-	            <li style="width: 20%;"><%=link_to "<<",@previous%></li>
-	            <li style="width: 60%;"><a href="#"><%=@bc%></a></li>
-	            <li style="width: 20%;"><%=link_to ">>",@next%></li>
-	        </ul>
-	    </div><!-- /navbar -->
+        <% unless request.original_url.include? "reply/index?key_com="%>
+	       	<div data-role="navbar">
+		        <ul>
+		            <li style="width: 20%;"><%=link_to "<<",@previous%></li>
+		            <li style="width: 60%;"><a href="#"><%=@bc%></a></li>
+		            <li style="width: 20%;"><%=link_to ">>",@next%></li>
+		        </ul>
+		    </div><!-- /navbar -->
+	    <%else%>
+	    	<div data-role="navbar">
+		        <ul>
+		            <li style="width: 20%;"><%=link_to "<<Back",comment_index_path%></li>
+		        </ul>
+		    </div><!-- /navbar -->
+	    <%end%>
     </div><!-- /header -->
     <div role="main" class="ui-content">
         <div class="article">
@@ -175,13 +183,21 @@
         </ul>
     </div><!-- /panel -->
     <div data-role="footer">
-    	<div data-role="navbar">
-	        <ul>
-	           	<li style="width: 20%;"><%=link_to "<<",@previous%></li>
-	            <li style="width: 60%;"><a href="#"><%=@bc%></a></li>
-	            <li style="width: 20%;"><%=link_to ">>",@next%></li>
-	        </ul>
-	    </div><!-- /navbar -->
+    	<% unless request.original_url.include? "reply/index?key_com="%>
+	    	<div data-role="navbar">
+		        <ul>
+		           	<li style="width: 20%;"><%=link_to "<<",@previous%></li>
+		            <li style="width: 60%;"><a href="#"><%=@bc%></a></li>
+		            <li style="width: 20%;"><%=link_to ">>",@next%></li>
+		        </ul>
+		    </div><!-- /navbar -->
+		<%else%>
+	    	<div data-role="navbar">
+		        <ul>
+		            <li style="width: 20%;"><%=link_to "<<Back",comment_index_path%></li>
+		        </ul>
+		    </div><!-- /navbar -->
+	    <%end%>
     	<%=image_tag("schriftzug_uni_heidelberg.jpg",:style=>"width:100%;")%>
 	    <h1>by Kuroun Seung 2012 - 2014.</h1>
 	</div>

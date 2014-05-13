@@ -1,0 +1,70 @@
+
+<%= content_for :contents do %>
+
+	<div class="ui-corner-all custom-corners">
+	  <div class="ui-bar ui-bar-a">
+	    <ul data-role="listview" data-inset="true">
+	    	<%@head_comment.each_with_index do |c,index| %>
+			    <li style="background-color: #bbb;">
+					<% if admin_signed_in? %>
+							<%= form_for(@comment, :url => { :action => "destroy",:key_com=>c.id }, :method => :delete,:id=>c.id) do |f| %>
+								<div style="text-align: right;">
+									<%=image_submit_tag("delete.png", :onclick => "return confirm('Are you sure to delete this comment?')")%>
+								</div>
+							<%end%>
+					<%end%>
+					<p style="text-align: right;">
+						<%= c.created_at%>
+					</p>		
+				    <h2><%= c.name %></h2>
+				    <p style="white-space: normal;text-align: left;">
+				    	<%=image_tag("avatar-brown.png",:align=>"left",:style=>"width:20%;margin-right:10px;")%>
+				    	<%=link_to c.email,"mailto:#{c.email}"%>
+			    		<br />
+				    	<%= c.comment%>
+				    </p>
+			    </li>
+			    <% unless @view_reply.nil? || @view_reply.empty? %>
+			    	<%@view_reply.each_with_index do |r,index_r| %>
+			    		<li>
+			    			<div style="margin-left: 10px;">
+				    			<% if admin_signed_in? %>
+									<%= form_for(@reply, :url => {:controller => "replies", :action => "destroy",:key_re=>r.id,:key_com=>c.id }, :method => :delete) do |f| %>
+											<div style="text-align: right;">
+												<%=image_submit_tag("delete.png", :onclick => "return confirm('Are you sure to delete this reply?')")%>
+											</div>
+										</span>		
+									<%end%>	
+								<%end%>
+								<p style="text-align: right;">
+									<%= r.created_at%>
+								</p>
+								<h2><%= r.name %></h2>
+								<p style="white-space: normal;text-align: left;">
+									<%if index_r % 2 !=0 %>
+										<%=image_tag("reply-grey.png",:align=>"left",:style=>"width:10%;margin-right:10px;")%>
+									<%else%>
+										<%=image_tag("reply-pink.png",:align=>"left",:style=>"width:10%;margin-right:10px;")%>
+									<%end%>
+									<%=link_to r.email,"mailto:#{r.email}"%>
+			    					<br />
+									<%= r.reply%>
+								</p>
+						    </div>	
+			    		</li>
+			    	<%end%>
+			    <%end%>
+			    <li>
+			    	<%= form_for @reply,:url => url_for(:controller => 'replies',:action => 'create',:key_com=>c.id) do |f| %>
+				    	<%= f.hidden_field :user_comment_id,:value=>c.id%>
+				        <%= f.text_field :name, {:placeholder=> "Name", "data-clear-btn"=>true} %>
+				        <%= f.email_field :email, {:placeholder=> "Email", "data-clear-btn"=>true} %>
+				        <%= f.text_area :reply, {:placeholder=> "Reply"}%>
+				        <%= f.submit "Send",{:class=>"ui-shadow ui-btn ui-corner-all"} %>
+				     <% end %>
+			    </li>
+			 <%end%>
+		</ul>
+	  </div>
+	</div>
+<%end%>

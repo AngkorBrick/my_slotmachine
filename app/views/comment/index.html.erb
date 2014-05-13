@@ -49,7 +49,7 @@
 			</td>
 		</tr>
 		<% if admin_signed_in? %>
-			<%= form_for(@comment, :url => { :action => "destroy",:key_com=>c.id }, :method => :delete,:id=>c.id) do |f| %>
+			<%= form_for(@comment, :url => { :action => "destroy",:key_com=>c.id }, :method => :delete) do |f| %>
 				<span style="margin-left: 700px;">
 					<%=image_submit_tag("delete.png", :onclick => "return confirm('Are you sure to delete this comment?')")%>
 					
