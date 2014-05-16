@@ -116,7 +116,7 @@
     	<%=image_tag("Robo_Head.jpg",:style=>"width:100%;")%>
         <h1>Robotics Pratical</h1>
         <a href="#left-panel" data-icon="bars" data-iconpos="notext" data-shadow="false" data-iconshadow="false">Menu</a>
-        <% unless request.original_url.include? "reply/index?key_com="%>
+        <% unless (request.original_url.include? "reply/index?key_com=") || (request.original_url.include? "kh-verwalter") || (request.original_url.include? "admins")%>
 	       	<div data-role="navbar">
 		        <ul>
 		            <li style="width: 20%;"><%=link_to "<<",@previous%></li>
@@ -183,7 +183,8 @@
         </ul>
     </div><!-- /panel -->
     <div data-role="footer">
-    	<% unless request.original_url.include? "reply/index?key_com="%>
+    	<% unless (request.original_url.include? "reply/index?key_com=") || (request.original_url.include? "kh-verwalter") || (request.original_url.include? "admins")%>
+    	<!--<%#unless request.original_url[1].split("/").any? { |x| ["reply", "kh-verwalter", "admins"].include?(x) }%>-->
 	    	<div data-role="navbar">
 		        <ul>
 		           	<li style="width: 20%;"><%=link_to "<<",@previous%></li>

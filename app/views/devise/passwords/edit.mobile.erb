@@ -1,0 +1,22 @@
+
+<%= content_for :contents do %>
+<div class="ui-corner-all custom-corners">
+	  <div class="ui-bar ui-bar-a">
+	    <h3>Administrator Area</h3>
+	  </div>
+	  <div class="ui-body ui-body-a">
+			<div class="ui-field-contain">
+				<%= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :put }) do |f| %>
+				  <%= devise_error_messages! %>
+				  <%= f.hidden_field :reset_password_token %>
+				
+				  <%= f.password_field :password, { :placeholder=> "New Password","data-clear-btn"=>true }%>
+				  <%= f.password_field :password_confirmation,{ :placeholder=> "Confirm New Password","data-clear-btn"=>true } %></div>
+				
+				  <%= f.submit "Change my password" %>
+				<% end %>
+			 </div>
+		</div>
+	</div>
+<%= render "devise/shared/links" %>
+<%end%>
